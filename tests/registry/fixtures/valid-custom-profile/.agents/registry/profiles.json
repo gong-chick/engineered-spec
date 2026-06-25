@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "profiles": {
+    "nest": {
+      "status": "active",
+      "label": "NestJS",
+      "rules_dir": ".agents/rules/profiles/nest",
+      "skills_dir": ".agents/skills/profiles/nest",
+      "aliases": ["nestjs"]
+    }
+  }
+}

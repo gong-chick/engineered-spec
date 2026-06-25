@@ -1,0 +1,18 @@
+[
+  {
+    "query": "从 tasks.md 第一条未完成任务开始写代码",
+    "should_trigger": true
+  },
+  {
+    "query": "/opsx:apply user-manage-redesign",
+    "should_trigger": true
+  },
+  {
+    "query": "分析一下这个设计稿",
+    "should_trigger": false
+  },
+  {
+    "query": "给我做 UI 验收",
+    "should_trigger": false
+  }
+]

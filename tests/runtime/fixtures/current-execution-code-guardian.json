@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "kind": "expert-execution",
+  "run_id": "run_20260331_160700_smoke",
+  "status": "completed",
+  "role": {
+    "id": "code-guardian",
+    "name": "规范守护者"
+  },
+  "flow": {
+    "id": "prd-to-delivery"
+  },
+  "execution_plan": {
+    "execution_steps": [
+      "检查实现范围与需求是否一致",
+      "输出 checklist 与 iterations",
+      "准备交付完成结论"
+    ]
+  },
+  "markdown": "# code-guardian execution"
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "scenario_packages": {
+    "broken-package": {
+      "roles": ["task-orchestrator"],
+      "skills": ["demo-skill"],
+      "rules": ["missing-source-rule"],
+      "domains": ["orchestration"]
+    }
+  }
+}

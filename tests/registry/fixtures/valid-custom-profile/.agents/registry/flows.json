@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "support_files": [],
+  "flows": {
+    "prd-to-delivery": {
+      "name": "PRD 到交付",
+      "status": "active",
+      "profiles": ["nest"],
+      "source": ".agents/flows/common/prd-to-delivery.md"
+    }
+  }
+}

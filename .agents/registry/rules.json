@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "rules": {
+    "project-overview": {
+      "sourceByProfile": {
+        "react": ".agents/rules/profiles/react/01-项目概述.md",
+        "vue": ".agents/rules/profiles/vue/01-项目概述.md",
+        "springboot": ".agents/rules/profiles/springboot/01-项目概述.md",
+        "node-tooling": ".agents/rules/profiles/node-tooling/01-项目概述.md"
+      },
+      "domains": ["engineering"]
+    },
+    "coding-standard": {
+      "source": ".agents/rules/common/02-编码规范.md",
+      "domains": ["governance"]
+    },
+    "project-structure": {
+      "sourceByProfile": {
+        "react": ".agents/rules/profiles/react/03-项目结构.md",
+        "vue": ".agents/rules/profiles/vue/03-项目结构.md",
+        "springboot": ".agents/rules/profiles/springboot/03-项目结构.md",
+        "node-tooling": ".agents/rules/profiles/node-tooling/03-项目结构.md"
+      },
+      "domains": ["engineering"]
+    },
+    "component-standard": {
+      "sourceByProfile": {
+        "react": ".agents/rules/profiles/react/04-组件规范.md",
+        "vue": ".agents/rules/profiles/vue/04-组件规范.md"
+      },
+      "domains": ["engineering"]
+    },
+    "api-standard": {
+      "sourceByProfile": {
+        "react": ".agents/rules/profiles/react/05-API规范.md",
+        "vue": ".agents/rules/profiles/vue/05-API规范.md"
+      },
+      "domains": ["governance"]
+    },
+    "route-standard": {
+      "sourceByProfile": {
+        "react": ".agents/rules/profiles/react/06-路由规范.md",
+        "vue": ".agents/rules/profiles/vue/06-路由规范.md"
+      },
+      "domains": ["governance", "engineering"]
+    },
+    "store-standard": {
+      "sourceByProfile": {
+        "react": ".agents/rules/profiles/react/07-状态管理.md",
+        "vue": ".agents/rules/profiles/vue/07-状态管理.md"
+      },
+      "domains": ["engineering"]
+    },
+    "generic-constraints": {
+      "source": ".agents/rules/common/08-通用约束.md",
+      "domains": ["governance"]
+    },
+    "style-standard": {
+      "sourceByProfile": {
+        "react": ".agents/rules/profiles/react/09-样式规范.md",
+        "vue": ".agents/rules/profiles/vue/09-样式规范.md"
+      },
+      "domains": ["engineering", "governance"]
+    },
+    "doc-standard": {
+      "source": ".agents/rules/common/10-文档规范.md",
+      "domains": ["documentation"]
+    },
+    "test-standard-web": {
+      "sourceByProfile": {
+        "react": ".agents/rules/profiles/react/11-测试规范.md",
+        "vue": ".agents/rules/profiles/vue/11-测试规范.md"
+      },
+      "domains": ["testing"]
+    },
+    "test-standard-jvm": {
+      "source": ".agents/rules/profiles/springboot/11-测试规范.md",
+      "domains": ["testing"]
+    },
+    "test-standard-node": {
+      "source": ".agents/rules/profiles/node-tooling/11-测试规范.md",
+      "domains": ["testing"]
+    },
+    "superpowers-standard": {
+      "source": ".agents/rules/common/12-Superpowers执行规范.md",
+      "domains": ["governance"]
+    },
+    "format-check-standard-web": {
+      "sourceByProfile": {
+        "react": ".agents/rules/profiles/react/13-代码格式化与检查.md",
+        "vue": ".agents/rules/profiles/vue/13-代码格式化与检查.md"
+      },
+      "domains": ["governance"]
+    },
+    "format-check-standard-jvm": {
+      "source": ".agents/rules/profiles/springboot/13-代码格式化与检查.md",
+      "domains": ["governance"]
+    },
+    "format-check-standard-node": {
+      "source": ".agents/rules/profiles/node-tooling/13-代码格式化与检查.md",
+      "domains": ["governance"]
+    },
+    "audit-report-standard": {
+      "source": ".agents/rules/common/14-审计汇报规范.md",
+      "domains": ["governance", "observability"]
+    },
+    "layering-standard": {
+      "source": ".agents/rules/profiles/springboot/04-分层规范.md",
+      "domains": ["engineering"]
+    },
+    "api-contract-standard": {
+      "source": ".agents/rules/profiles/springboot/05-接口与契约规范.md",
+      "domains": ["governance"]
+    },
+    "persistence-standard": {
+      "source": ".agents/rules/profiles/springboot/06-数据访问规范.md",
+      "domains": ["engineering"]
+    },
+    "runtime-config-standard": {
+      "source": ".agents/rules/profiles/springboot/07-配置与运行时规范.md",
+      "domains": ["engineering"]
+    },
+    "exception-standard": {
+      "source": ".agents/rules/profiles/springboot/09-异常与日志规范.md",
+      "domains": ["engineering", "observability"]
+    },
+    "cli-standard": {
+      "source": ".agents/rules/profiles/node-tooling/04-CLI与模块规范.md",
+      "domains": ["engineering"]
+    },
+    "contract-standard": {
+      "source": ".agents/rules/profiles/node-tooling/05-Contract与Schema规范.md",
+      "domains": ["governance"]
+    },
+    "runtime-files-standard": {
+      "source": ".agents/rules/profiles/node-tooling/06-运行时文件规范.md",
+      "domains": ["engineering"]
+    },
+    "logging-standard": {
+      "source": ".agents/rules/profiles/node-tooling/07-日志与错误处理规范.md",
+      "domains": ["observability"]
+    },
+    "script-entry-standard": {
+      "source": ".agents/rules/profiles/node-tooling/09-脚本与入口规范.md",
+      "domains": ["engineering"]
+    }
+  }
+}

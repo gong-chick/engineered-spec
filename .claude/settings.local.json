@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -rf \"/Users/lizhenwei/workspace/test/test-ai-spec/prd-to-delivery-local-first-060/test_副本22/.agents\")",
+      "Bash(rm -rf \"/Users/lizhenwei/workspace/test/test-ai-spec/prd-to-delivery-local-first-060/test_副本22/.ai-spec\")",
+      "Bash(rm -f \"/Users/lizhenwei/workspace/test/test-ai-spec/prd-to-delivery-local-first-060/test_副本22/.cursor/rules/ai-spec-auto.mdc\")",
+      "Bash(rm -rf \"/Users/lizhenwei/workspace/test/test-ai-spec/prd-to-delivery-local-first-060/test_副本22/.cursor/commands\")",
+      "Bash(rm -rf \"/Users/lizhenwei/workspace/test/test-ai-spec/prd-to-delivery-local-first-060/test_副本22/.claude\")"
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "profiles": {
+    "vue": {
+      "status": "active",
+      "label": "Vue",
+      "project_type": "frontend",
+      "implementation_role": "frontend-implementer",
+      "rules_dir": ".agents/rules/profiles/vue",
+      "skills_dir": ".agents/skills/profiles/vue",
+      "configs_dir": "configs/profiles/vue",
+      "project_init_rule_ids": [
+        "component-standard",
+        "api-standard",
+        "route-standard",
+        "store-standard",
+        "style-standard",
+        "test-standard-web",
+        "format-check-standard-web"
+      ],
+      "aliases": []
+    },
+    "react": {
+      "status": "active",
+      "label": "React",
+      "project_type": "frontend",
+      "implementation_role": "frontend-implementer",
+      "rules_dir": ".agents/rules/profiles/react",
+      "skills_dir": ".agents/skills/profiles/react",
+      "configs_dir": "configs/profiles/react",
+      "project_init_rule_ids": [
+        "component-standard",
+        "api-standard",
+        "route-standard",
+        "store-standard",
+        "style-standard",
+        "test-standard-web",
+        "format-check-standard-web"
+      ],
+      "aliases": []
+    },
+    "springboot": {
+      "status": "active",
+      "label": "Spring Boot",
+      "project_type": "backend",
+      "implementation_role": "backend-implementer",
+      "rules_dir": ".agents/rules/profiles/springboot",
+      "skills_dir": ".agents/skills/profiles/springboot",
+      "configs_dir": "configs/profiles/springboot",
+      "project_init_rule_ids": [
+        "layering-standard",
+        "api-contract-standard",
+        "persistence-standard",
+        "runtime-config-standard",
+        "exception-standard",
+        "test-standard-jvm",
+        "format-check-standard-jvm"
+      ],
+      "aliases": []
+    },
+    "node-tooling": {
+      "status": "active",
+      "label": "Node.js Tooling",
+      "project_type": "tooling",
+      "implementation_role": "tooling-implementer",
+      "rules_dir": ".agents/rules/profiles/node-tooling",
+      "skills_dir": ".agents/skills/profiles/node-tooling",
+      "configs_dir": "configs/profiles/node-tooling",
+      "project_init_rule_ids": [
+        "cli-standard",
+        "contract-standard",
+        "runtime-files-standard",
+        "logging-standard",
+        "script-entry-standard",
+        "test-standard-node",
+        "format-check-standard-node"
+      ],
+      "aliases": []
+    },
+    "nestjs": {
+      "status": "active",
+      "label": "NestJS",
+      "project_type": "backend",
+      "implementation_role": "backend-implementer",
+      "rules_dir": ".agents/rules/profiles/nestjs",
+      "skills_dir": ".agents/skills/profiles/nestjs",
+      "configs_dir": "configs/profiles/nestjs",
+      "project_init_rule_ids": [
+        "module-structure-standard",
+        "api-contract-standard",
+        "persistence-standard",
+        "config-standard",
+        "exception-standard",
+        "test-standard-node",
+        "format-check-standard-node"
+      ],
+      "aliases": ["nest"]
+    }
+  },
+  "_multi_profile_note": "当 manifest.json 使用 profiles 数组时（如 [\"vue\",\"nestjs\"]），表示同一仓库同时激活多个 profile。规则统一写入根目录 .agents/rules/，文件名需区分领域避免冲突；context/ 下使用单一 PROJECT.md 覆盖整个项目。"
+}

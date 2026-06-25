@@ -1,0 +1,18 @@
+[
+  {
+    "query": "在 /opsx:propose 之前先帮我梳理需求和设计稿输入",
+    "should_trigger": true
+  },
+  {
+    "query": "我要新增一个带 mock 数据的页面提案",
+    "should_trigger": true
+  },
+  {
+    "query": "执行下一个开发任务",
+    "should_trigger": false
+  },
+  {
+    "query": "检查页面和设计稿差异",
+    "should_trigger": false
+  }
+]

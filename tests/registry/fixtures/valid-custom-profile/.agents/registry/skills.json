@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "demo-skill": {
+      "sourceByProfile": {
+        "nest": ".agents/skills/profiles/nest/demo-skill/SKILL.md"
+      },
+      "domains": ["engineering"]
+    }
+  }
+}

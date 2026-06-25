@@ -1,0 +1,6 @@
+dist
+lib
+assets
+public
+node_modules
+.eslintrc.js

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "kind": "expert-execution",
+  "run_id": "run_20260331_160700_smoke",
+  "status": "completed",
+  "role": {
+    "id": "frontend-implementer",
+    "name": "前端实现专家"
+  },
+  "flow": {
+    "id": "prd-to-delivery"
+  },
+  "execution_plan": {
+    "execution_steps": [
+      "完成最小组件实现",
+      "准备交接 code-guardian"
+    ]
+  },
+  "markdown": "# frontend-implementer execution"
+}

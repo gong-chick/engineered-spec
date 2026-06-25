@@ -1,0 +1,15 @@
+{
+  "eventId": "evt_001",
+  "runId": "run_20260507_001",
+  "projectId": "br-ai-spec-a83f91c2",
+  "eventType": "hook.finished",
+  "stage": "post-test",
+  "status": "success",
+  "severity": "info",
+  "message": "post-test 检查通过",
+  "timestamp": "2026-05-07T00:00:00Z",
+  "metadata": {
+    "hookId": "post-test",
+    "durationMs": 1200
+  }
+}

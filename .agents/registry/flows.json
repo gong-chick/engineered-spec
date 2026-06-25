@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "support_files": [
+    ".agents/flows/FRONTMATTER.md",
+    ".agents/flows/RUN_OUTPUT.md",
+    ".agents/flows/common/README.md"
+  ],
+  "flows": {
+    "prd-to-delivery": {
+      "name": "PRD 到交付",
+      "status": "active",
+      "source": ".agents/flows/common/prd-to-delivery.md",
+      "default_schema": "expert-delivery",
+      "artifact_profile": "full",
+      "required_roles": ["requirement-analyst", "frontend-implementer", "code-guardian"],
+      "optional_roles": ["design-collaborator", "api-contract-specialist", "unit-test-specialist", "verification-reviewer", "performance-auditor"],
+      "first_handoff": "requirement-analyst",
+      "approval_gates": [],
+      "handoff_gate_policy": {
+        "requirement-analyst->frontend-implementer": "silent",
+        "frontend-implementer->code-guardian": "silent",
+        "code-guardian->archive-change": "silent"
+      },
+      "core_artifacts": ["proposal", "specs", "design", "tasks", "checklist", "iterations"],
+      "required_artifacts": ["proposal.md", "specs", "design.md", "tasks.md", "checklist.md", "iterations.md"],
+      "handoff_policy": "task-orchestrator -> requirement-analyst -> frontend-implementer -> code-guardian -> archive-change(可选) -> terminal",
+      "completion_policy": "proposal.md、specs/、design.md、tasks.md、checklist.md、iterations.md 缺一不可；默认自动进入 archive-change，如需人工审核可切换到 main-flow-blocking"
+    },
+    "bugfix-to-verification": {
+      "name": "缺陷修复到验证",
+      "status": "active",
+      "source": ".agents/flows/common/bugfix-to-verification.md",
+      "default_schema": "expert-delivery",
+      "artifact_profile": "compact",
+      "required_roles": ["frontend-implementer", "code-guardian"],
+      "optional_roles": ["unit-test-specialist", "verification-reviewer", "performance-auditor"],
+      "first_handoff": "frontend-implementer",
+      "approval_gates": [],
+      "handoff_gate_policy": {
+        "frontend-implementer->code-guardian": "silent"
+      },
+      "runtime_transitions": {
+        "frontend-implementer": {
+          "action": "handoff",
+          "to_role": "code-guardian",
+          "next_role": null,
+          "message": "handoff to code-guardian after lightweight bugfix delivery"
+        },
+        "unit-test-specialist": {
+          "action": "handoff",
+          "to_role": "code-guardian",
+          "next_role": null,
+          "message": "handoff to code-guardian after lightweight test supplementation"
+        },
+        "verification-reviewer": {
+          "action": "handoff",
+          "to_role": "code-guardian",
+          "next_role": null,
+          "message": "handoff to code-guardian after lightweight verification review"
+        },
+        "performance-auditor": {
+          "action": "handoff",
+          "to_role": "code-guardian",
+          "next_role": null,
+          "message": "handoff to code-guardian after lightweight performance review"
+        },
+        "code-guardian": {
+          "action": "complete",
+          "to_role": "code-guardian",
+          "next_role": null,
+          "message": "run completed after lightweight verification closeout"
+        }
+      },
+      "core_artifacts": ["bugfix", "implementation-notes", "checklist", "iterations"],
+      "required_artifacts": ["bugfix.md", "implementation-notes.md", "checklist.md", "iterations.md"],
+      "handoff_policy": "task-orchestrator -> frontend-implementer -> code-guardian -> terminal",
+      "completion_policy": "bugfix.md、implementation-notes.md、checklist.md、iterations.md 缺一不可；若守护阶段发现范围升级，则转回 prd-to-delivery"
+    },
+    "change-to-release": {
+      "name": "变更到发布",
+      "status": "active",
+      "source": ".agents/flows/common/change-to-release.md",
+      "default_schema": "expert-delivery",
+      "artifact_profile": "compact",
+      "required_roles": ["build-specialist", "pipeline-specialist", "deployment-specialist"],
+      "optional_roles": ["e2e-test-specialist", "code-guardian"],
+      "first_handoff": "build-specialist",
+      "approval_gates": [],
+      "core_artifacts": ["build-analysis", "pipeline-plan", "deployment-plan", "release-checklist"],
+      "required_artifacts": ["build-analysis", "pipeline-plan", "deployment-plan"],
+      "handoff_policy": "task-orchestrator -> build-specialist -> pipeline-specialist -> deployment-specialist -> code-guardian(可选) -> terminal",
+      "completion_policy": "构建、流水线与部署风险已经收口；若启用 E2E 或守护专家，则需补齐对应验证结论"
+    },
+    "requirement-to-observability": {
+      "name": "需求到可观测",
+      "status": "active",
+      "source": ".agents/flows/common/requirement-to-observability.md",
+      "default_schema": "expert-delivery",
+      "artifact_profile": "full",
+      "required_roles": ["requirement-analyst", "event-instrumentation-specialist"],
+      "optional_roles": ["error-tracker", "rum-analyst", "code-guardian"],
+      "first_handoff": "requirement-analyst",
+      "approval_gates": [],
+      "core_artifacts": ["proposal", "design", "tasks", "event-plan", "tracking-schema-notes"],
+      "required_artifacts": ["proposal.md", "design.md", "tasks.md", "event-plan"],
+      "handoff_policy": "task-orchestrator -> requirement-analyst -> event-instrumentation-specialist -> error-tracker/rum-analyst(可选) -> code-guardian(可选) -> terminal",
+      "completion_policy": "观测目标、事件口径与追踪建议已收口；若启用附加专家，则需补齐错误或 RUM 观察结论"
+    },
+    "change-to-architecture-review": {
+      "name": "变更到架构评审",
+      "status": "active",
+      "source": ".agents/flows/common/change-to-architecture-review.md",
+      "default_schema": "expert-delivery",
+      "artifact_profile": "compact",
+      "required_roles": ["architecture-advisor", "dependency-governor"],
+      "optional_roles": ["requirement-analyst", "code-guardian"],
+      "first_handoff": "architecture-advisor",
+      "approval_gates": [],
+      "core_artifacts": ["architecture-notes", "module-boundary-suggestions", "dependency-audit-notes", "upgrade-plan"],
+      "required_artifacts": ["architecture-notes", "dependency-audit-notes"],
+      "handoff_policy": "task-orchestrator -> architecture-advisor -> dependency-governor -> requirement-analyst/code-guardian(可选) -> terminal",
+      "completion_policy": "模块边界、依赖影响与后续实现拆分建议已经清楚，足以支撑下一轮实现或评审"
+    }
+  }
+}

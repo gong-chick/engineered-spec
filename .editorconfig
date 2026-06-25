@@ -1,0 +1,5 @@
+root = true
+
+# Windows PowerShell 5.1 依赖 UTF-8 BOM 正确解析中文；请勿用格式化工具去掉 BOM
+[install.ps1]
+charset = utf-8-bom

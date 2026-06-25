@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "scenario_packages": {
+    "valid-nest-package": {
+      "roles": ["task-orchestrator"],
+      "skills": ["demo-skill"],
+      "rules": ["demo-rule"],
+      "profiles": ["nest"],
+      "domains": ["orchestration", "engineering"]
+    }
+  }
+}

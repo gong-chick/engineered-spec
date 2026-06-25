@@ -1,0 +1,14 @@
+*.js
+*.ts
+*.tsx
+*.png
+*.eot
+*.ttf
+*.woff
+*.puml
+*.md
+node_modules
+dist
+lib
+assets
+public

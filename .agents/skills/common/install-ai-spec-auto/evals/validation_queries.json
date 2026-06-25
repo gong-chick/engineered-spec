@@ -1,0 +1,18 @@
+[
+  {
+    "query": "在这个仓库里自动初始化安装 ai-spec-auto，别只给命令，直接执行",
+    "should_trigger": true
+  },
+  {
+    "query": "给别人项目快速装上 rules 和 skills，自动跑 init",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我更新已经安装过的规范库",
+    "should_trigger": false
+  },
+  {
+    "query": "给我新建一个 skill，用来安装项目",
+    "should_trigger": false
+  }
+]

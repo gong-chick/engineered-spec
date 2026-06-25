@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "kind": "expert-execution",
+  "run_id": "run_20260331_160700_smoke",
+  "status": "completed",
+  "role": {
+    "id": "requirement-analyst",
+    "name": "需求解析专家"
+  },
+  "flow": {
+    "id": "prd-to-delivery"
+  },
+  "execution_plan": {
+    "execution_steps": [
+      "补齐 proposal",
+      "输出 spec",
+      "输出 tasks"
+    ]
+  },
+  "markdown": "# requirement-analyst execution"
+}

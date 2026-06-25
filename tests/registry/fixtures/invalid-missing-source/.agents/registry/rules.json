@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "rules": {
+    "missing-source-rule": {
+      "source": ".agents/rules/common/missing-source-rule.md",
+      "domains": ["governance"]
+    }
+  }
+}

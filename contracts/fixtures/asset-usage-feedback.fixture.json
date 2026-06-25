@@ -1,0 +1,14 @@
+{
+  "feedbackId": "fb_001",
+  "runId": "run_20260507_001",
+  "projectId": "br-ai-spec-a83f91c2",
+  "assetId": "rule.react.basic",
+  "assetType": "rule",
+  "status": "success",
+  "metrics": {
+    "adopted": true,
+    "hookBlocked": false,
+    "testPassed": true
+  },
+  "timestamp": "2026-05-07T00:00:00Z"
+}

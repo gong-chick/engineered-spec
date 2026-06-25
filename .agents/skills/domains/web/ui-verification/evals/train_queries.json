@@ -1,0 +1,18 @@
+[
+  {
+    "query": "按设计稿验收这个页面并产出 UI 问题清单",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我检查页面和 figma 是否一致",
+    "should_trigger": true
+  },
+  {
+    "query": "根据设计稿先梳理开发任务",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我新建页面路由",
+    "should_trigger": false
+  }
+]

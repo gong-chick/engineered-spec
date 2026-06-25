@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "rules": {
+    "demo-rule": {
+      "sourceByProfile": {
+        "nest": ".agents/rules/profiles/nest/demo-rule.md"
+      },
+      "domains": ["engineering"]
+    }
+  }
+}

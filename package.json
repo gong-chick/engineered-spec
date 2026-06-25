@@ -1,0 +1,73 @@
+{
+  "name": "@engineered/ai-spec-auto",
+  "version": "0.2.3",
+  "type": "module",
+  "description": "AI Coding 团队规范驱动开发 CLI — 一键安装规范、技能与工具配置",
+  "homepage": "https://github.com/Colouful/engineered-spec#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Colouful/engineered-spec.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Colouful/engineered-spec/issues"
+  },
+  "bin": {
+    "ai-spec-auto": "./bin/cli.js"
+  },
+  "maintainers": [
+    "zhenwei.li",
+    "lizhenwei"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "scripts": {
+    "demo:runtime": "node ./bin/cli.js demo-runtime-smoke",
+    "hub:sync-assets": "node ./scripts/hub-sync-assets.js",
+    "test:registry": "node ./tests/registry/validate-registry.test.js",
+    "test:runtime": "node ./tests/runtime/command-template-renderer.test.js && node ./tests/runtime/runtime-bootstrap.test.js && node ./tests/runtime/runtime-launcher.test.js && node ./tests/runtime/runtime-state-checkpoints.test.js && node ./tests/runtime/archive-change.test.js && node ./tests/runtime/task-orchestrator-runner.test.js && node ./tests/runtime/expert-executor.test.js && node ./tests/runtime/auto-fix-runtime.test.js && node ./tests/runtime/protocol-workflow-registry.test.js && node ./tests/runtime/protocol-update-fast-path.test.js && node ./tests/runtime/protocol-interaction-enhancements.test.js && node ./tests/runtime/spec-start-replay.test.js && node ./tests/runtime/demo-runtime-smoke.test.js && node ./tests/runtime/expert-delivery-template-content.test.js && node ./tests/runtime/sync.test.js && node ./tests/runtime/visual-command.test.js && node ./tests/runtime/hub-install.test.js && node ./tests/runtime/hub-diff.test.js && node ./tests/runtime/hub-upgrade-rollback.test.js && node ./tests/runtime/hub-runtime-report.test.js",
+    "verify:install-ps1-bom": "node ./scripts/verify-install-ps1-bom.js",
+    "test:p1": "node ./tests/ide/adapter-protocol.test.js && node ./tests/ide/cursor-adapter.test.js && node ./tests/ide/claude-adapter.test.js && node ./tests/ide/ide-sync.test.js && node ./tests/scanner/tech-scanner.test.js && node ./tests/asset/asset-package.test.js && node ./tests/config/config-layer.test.js && node ./tests/p1/multi-project-validation.test.js && node ./tests/p1/p1-integration.test.js",
+    "verify:p1": "npm run test:registry && npm run test:runtime && npm run test:p1 && npm pack --dry-run",
+    "test:p2": "node ./tests/agent/agent-profile.test.js && node ./tests/agent/tool-permission.test.js && node ./tests/agent/file-permission.test.js && node ./tests/agent/agent-context.test.js && node ./tests/agent/collaboration-protocol.test.js && node ./tests/agent/review-repair-loop.test.js && node ./tests/agent/conflict-handler.test.js && node ./tests/p2/p2-integration.test.js",
+    "verify:p2": "npm run test:registry && npm run test:runtime && npm run test:p1 && npm run test:p2 && npm pack --dry-run",
+    "test:p3": "node ./tests/governance/rbac.test.js && node ./tests/governance/asset-review.test.js && node ./tests/governance/audit-log.test.js && node ./tests/governance/gray-release.test.js && node ./tests/governance/rollback.test.js && node ./tests/governance/security-policy.test.js && node ./tests/p3/p3-integration.test.js",
+    "verify:p3": "npm run test:registry && npm run test:runtime && npm run test:p1 && npm run test:p2 && npm run test:p3 && npm pack --dry-run",
+    "test:p4": "node ./tests/visual/event-gateway.test.js && node ./tests/visual/timeline.test.js && node ./tests/visual/hook-dashboard.test.js && node ./tests/visual/agent-visual.test.js && node ./tests/visual/metrics.test.js && node ./tests/visual/risk-board.test.js && node ./tests/p4/p4-integration.test.js",
+    "verify:p4": "npm run test:registry && npm run test:runtime && npm run test:p1 && npm run test:p2 && npm run test:p3 && npm run test:p4 && npm pack --dry-run",
+    "test:p5": "node ./tests/asset/asset-registry.test.js && node ./tests/asset/asset-version.test.js && node ./tests/asset/asset-dependency.test.js && node ./tests/asset/asset-install.test.js && node ./tests/asset/asset-feedback.test.js && node ./tests/asset/asset-manager.test.js && node ./tests/asset/asset-installer.test.js && node ./tests/asset/asset-lifecycle.test.js && node ./tests/asset/asset-fork.test.js && node ./tests/asset/asset-quality.test.js && node ./tests/p5/p5-integration.test.js && node ./tests/p5/p5-real-install-rollback.test.js",
+    "verify:p5": "npm run test:registry && npm run test:runtime && npm run test:p1 && npm run test:p2 && npm run test:p3 && npm run test:p4 && npm run test:p5 && npm pack --dry-run",
+    "prepack": "npm run verify:install-ps1-bom"
+  },
+  "files": [
+    "bin/",
+    "contracts/",
+    "src/",
+    "internal/",
+    "scripts/",
+    ".agents/",
+    "configs/",
+    ".cursor/mcp.json",
+    ".qoder/",
+    "openspec/",
+    "install.sh",
+    "install.ps1",
+    "!tests/",
+    "!docs/",
+    "!.ai-spec/",
+    "!.tmp/",
+    "!skills-lock.json"
+  ],
+  "keywords": [
+    "ai",
+    "coding",
+    "spec",
+    "cursor",
+    "claude"
+  ],
+  "license": "MIT",
+  "optionalDependencies": {
+    "node-machine-id": "^1.1.12"
+  }
+}

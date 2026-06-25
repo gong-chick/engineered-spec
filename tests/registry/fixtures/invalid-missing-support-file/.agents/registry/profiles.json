@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "profiles": {
+    "vue": {
+      "status": "active",
+      "label": "Vue",
+      "rules_dir": ".agents/rules/profiles/vue",
+      "skills_dir": ".agents/skills/profiles/vue"
+    }
+  }
+}

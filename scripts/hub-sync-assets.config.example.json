@@ -1,0 +1,296 @@
+{
+  "hub": {
+    "baseUrl": "http://localhost:3000",
+    "projectDir": "/Users/lizhenwei/workspace/vueworkspace/bairong/skill-q-platform",
+    "adminEmail": "",
+    "adminPassword": "",
+    "adminSessionCookie": "",
+    "adminSecret": "",
+    "agentApiKey": ""
+  },
+  "defaults": {
+    "author": "lizhenwei",
+    "downloadPolicy": "login",
+    "skillCategorySlug": "dev-tools",
+    "ruleCategorySlug": "rule-sets",
+    "rolePublishStatus": "draft",
+    "scenarioPublishStatus": "draft",
+    "scenarioRecommendedIdes": ["cursor"],
+    "scenarioSupportedProfiles": ["vue", "react"],
+    "scenarioFeatured": false
+  },
+  "categoryMap": {
+    "skill": {},
+    "rule": {}
+  },
+  "domainIdMap": {},
+  "resources": {
+    "skills": {
+      "using-superpowers": {
+        "name": "技能调度核心规范"
+      },
+      "archive-change": {
+        "name": "归档变更增强层"
+      },
+      "create-proposal": {
+        "name": "创建提案增强层"
+      },
+      "create-test": {
+        "name": "创建测试"
+      },
+      "design-analysis": {
+        "name": "设计稿分析"
+      },
+      "execute-task": {
+        "name": "任务执行规范"
+      },
+      "create-view": {
+        "name": "页面视图创建与维护"
+      },
+      "ui-verification": {
+        "name": "UI 验收"
+      },
+      "web-design-guidelines": {
+        "name": "网页界面设计规范评审"
+      },
+      "create-api-vue": {
+        "name": "Vue 接口创建与维护"
+      },
+      "create-api-react": {
+        "name": "React 接口创建与维护"
+      },
+      "create-component-vue": {
+        "name": "Vue 组件创建与拆分"
+      },
+      "create-component-react": {
+        "name": "React 组件创建与拆分"
+      },
+      "create-route-vue": {
+        "name": "Vue 路由创建与维护"
+      },
+      "create-route-react": {
+        "name": "React 路由创建与维护"
+      },
+      "create-store-vue": {
+        "name": "Vue 状态管理创建与维护"
+      },
+      "create-store-react": {
+        "name": "React 状态管理创建与维护"
+      },
+      "theme-variables-vue": {
+        "name": "Vue 主题变量规范"
+      },
+      "theme-variables-react": {
+        "name": "React 主题变量规范"
+      }
+    },
+    "rules": {
+      "coding-standard": {
+        "name": "编码规范"
+      },
+      "api-standard": {
+        "name": "API 规范"
+      },
+      "generic-constraints": {
+        "name": "通用约束"
+      },
+      "doc-standard": {
+        "name": "文档规范"
+      },
+      "test-standard": {
+        "name": "测试规范"
+      },
+      "format-check-standard": {
+        "name": "代码格式化与检查"
+      },
+      "audit-report-standard": {
+        "name": "审计汇报规范"
+      },
+      "vue-project-overview": {
+        "name": "Vue 项目概述"
+      },
+      "react-project-overview": {
+        "name": "React 项目概述"
+      },
+      "vue-project-structure": {
+        "name": "Vue 项目结构"
+      },
+      "react-project-structure": {
+        "name": "React 项目结构"
+      },
+      "vue-component-guidelines": {
+        "name": "Vue 组件规范"
+      },
+      "react-component-guidelines": {
+        "name": "React 组件规范"
+      },
+      "vue-routing-guidelines": {
+        "name": "Vue 路由规范"
+      },
+      "react-routing-guidelines": {
+        "name": "React 路由规范"
+      },
+      "vue-state-management": {
+        "name": "Vue 状态管理规范"
+      },
+      "react-state-management": {
+        "name": "React 状态管理规范"
+      },
+      "vue-style-guidelines": {
+        "name": "Vue 样式规范"
+      },
+      "react-style-guidelines": {
+        "name": "React 样式规范"
+      }
+    },
+    "roles": {
+      "task-orchestrator": {
+        "name": "任务主代理",
+        "author": "lizhenwei",
+        "publishStatus": "draft",
+        "supportedProfiles": ["vue", "react"]
+      },
+      "requirement-analyst": {
+        "name": "需求解析专家"
+      },
+      "frontend-implementer": {
+        "name": "前端实现专家"
+      },
+      "code-guardian": {
+        "name": "规范守护者"
+      },
+      "archive-change": {
+        "name": "归档专家"
+      },
+      "design-collaborator": {
+        "name": "设计协作专家"
+      },
+      "api-contract-specialist": {
+        "name": "API 契约专家"
+      },
+      "build-specialist": {
+        "name": "构建专家"
+      },
+      "dependency-governor": {
+        "name": "依赖治理专家"
+      },
+      "architecture-advisor": {
+        "name": "架构顾问专家"
+      },
+      "unit-test-specialist": {
+        "name": "单元测试专家"
+      },
+      "e2e-test-specialist": {
+        "name": "E2E 测试专家"
+      },
+      "verification-reviewer": {
+        "name": "验证评审专家"
+      },
+      "performance-auditor": {
+        "name": "性能审计专家"
+      },
+      "pipeline-specialist": {
+        "name": "流水线专家"
+      },
+      "deployment-specialist": {
+        "name": "部署专家"
+      },
+      "event-instrumentation-specialist": {
+        "name": "埋点方案专家"
+      },
+      "error-tracker": {
+        "name": "错误追踪专家"
+      },
+      "rum-analyst": {
+        "name": "RUM 分析专家"
+      }
+    },
+    "scenarios": {
+      "frontend-basic": {
+        "name": "前端基础交付场景",
+        "description": "前端基础交付场景",
+        "entryRoleSlug": "task-orchestrator",
+        "optionalRoles": [],
+        "supportedProfiles": ["vue", "react"],
+        "recommendedIdes": ["cursor"],
+        "isFeatured": false
+      },
+      "design-to-code": {
+        "name": "设计到代码交付场景",
+        "description": "设计到代码交付场景",
+        "entryRoleSlug": "task-orchestrator",
+        "optionalRoles": [],
+        "supportedProfiles": ["vue", "react"],
+        "recommendedIdes": ["cursor"],
+        "isFeatured": false
+      },
+      "quality-governance": {
+        "name": "质量治理场景",
+        "description": "质量治理场景",
+        "entryRoleSlug": "code-guardian",
+        "optionalRoles": [],
+        "supportedProfiles": ["vue", "react"],
+        "recommendedIdes": ["cursor"],
+        "isFeatured": false
+      },
+      "enterprise-docs-prd": {
+        "name": "企业文档需求沉淀场景",
+        "description": "企业文档与需求沉淀场景",
+        "entryRoleSlug": "task-orchestrator",
+        "optionalRoles": [],
+        "supportedProfiles": ["vue", "react"],
+        "recommendedIdes": ["cursor"],
+        "isFeatured": false
+      },
+      "bugfix-to-verification": {
+        "name": "缺陷修复到验证场景",
+        "description": "低风险缺陷修复与轻量验证场景",
+        "entryRoleSlug": "task-orchestrator",
+        "optionalRoles": [
+          "unit-test-specialist",
+          "verification-reviewer",
+          "performance-auditor"
+        ],
+        "supportedProfiles": ["vue", "react"],
+        "recommendedIdes": ["cursor"],
+        "isFeatured": false
+      },
+      "change-to-release": {
+        "name": "变更到发布场景",
+        "description": "构建、回归验证、流水线与部署准备场景",
+        "entryRoleSlug": "build-specialist",
+        "optionalRoles": [
+          "e2e-test-specialist",
+          "code-guardian"
+        ],
+        "supportedProfiles": ["vue", "react"],
+        "recommendedIdes": ["cursor"],
+        "isFeatured": false
+      },
+      "requirement-to-observability": {
+        "name": "需求到可观测场景",
+        "description": "埋点、错误追踪与真实用户监控方案设计场景",
+        "entryRoleSlug": "requirement-analyst",
+        "optionalRoles": [
+          "error-tracker",
+          "rum-analyst",
+          "code-guardian"
+        ],
+        "supportedProfiles": ["vue", "react"],
+        "recommendedIdes": ["cursor"],
+        "isFeatured": false
+      },
+      "change-to-architecture-review": {
+        "name": "变更到架构评审场景",
+        "description": "模块边界、依赖影响与结构性改动评审场景",
+        "entryRoleSlug": "architecture-advisor",
+        "optionalRoles": [
+          "code-guardian"
+        ],
+        "supportedProfiles": ["vue", "react"],
+        "recommendedIdes": ["cursor"],
+        "isFeatured": false
+      }
+    }
+  }
+}

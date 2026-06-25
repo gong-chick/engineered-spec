@@ -1,0 +1,28 @@
+{
+  "runId": "run_20260507_001",
+  "projectId": "br-ai-spec-a83f91c2",
+  "taskId": "task_001",
+  "specId": "spec_001",
+  "changedFiles": [
+    {
+      "path": "src/index.ts",
+      "changeType": "modify",
+      "summary": "增加事件上报"
+    }
+  ],
+  "testResults": [
+    {
+      "command": "pnpm test",
+      "status": "success"
+    }
+  ],
+  "hookResults": [
+    {
+      "hookId": "post-test",
+      "status": "success"
+    }
+  ],
+  "repairResults": [],
+  "reviewResults": [],
+  "finalStatus": "success"
+}

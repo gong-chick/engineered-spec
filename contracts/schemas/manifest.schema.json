@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://br-ai-spec.local/contracts/manifest.schema.json",
+  "title": "Manifest",
+  "type": "object",
+  "required": [
+    "version",
+    "adapters",
+    "generatedAt"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rules": {
+      "type": "array",
+      "default": []
+    },
+    "skills": {
+      "type": "array",
+      "default": []
+    },
+    "agentProfiles": {
+      "type": "array",
+      "default": []
+    },
+    "commands": {
+      "type": "array",
+      "default": []
+    },
+    "hooks": {
+      "type": "array",
+      "default": []
+    },
+    "adapters": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": "boolean",
+          "default": false
+        },
+        "claudeCode": {
+          "type": "boolean",
+          "default": false
+        },
+        "codex": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "checksum": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

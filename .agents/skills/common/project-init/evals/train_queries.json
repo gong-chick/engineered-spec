@@ -1,0 +1,18 @@
+[
+  {
+    "query": "初始化当前项目规范，补 01、03 和缺失规则",
+    "should_trigger": true
+  },
+  {
+    "query": "根据项目自动生成自定义规则",
+    "should_trigger": true
+  },
+  {
+    "query": "给我新建一个技能",
+    "should_trigger": false
+  },
+  {
+    "query": "执行下一条 tasks.md 任务",
+    "should_trigger": false
+  }
+]

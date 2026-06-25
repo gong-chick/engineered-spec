@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skills": {
+    "demo-skill": {
+      "source": ".agents/skills/common/demo-skill/SKILL.md",
+      "domains": ["engineering"]
+    }
+  }
+}

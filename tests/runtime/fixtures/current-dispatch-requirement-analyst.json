@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "kind": "expert-dispatch",
+  "run_id": "run_20260331_160700_smoke",
+  "status": "running",
+  "role": {
+    "id": "requirement-analyst",
+    "name": "需求解析专家",
+    "source": ".agents/roles/common/requirement-analyst.md",
+    "preferred_skills": []
+  },
+  "task": {
+    "raw_goal": "创建一个商品组件",
+    "change_id": "runtime-smoke-demo"
+  },
+  "flow": {
+    "id": "prd-to-delivery"
+  },
+  "execution": {
+    "profile": "vue",
+    "current_role": "requirement-analyst",
+    "next_role": "frontend-implementer",
+    "pending_gate": null,
+    "expected_output": [
+      "补齐 proposal",
+      "输出 spec",
+      "输出 tasks"
+    ],
+    "skills": []
+  },
+  "anchor": {
+    "schema_version": 1,
+    "kind": "task-anchor",
+    "task": {
+      "raw_goal": "创建一个商品组件",
+      "change_id": "runtime-smoke-demo",
+      "input_kind": "natural-language"
+    },
+    "stage": {
+      "flow_id": "prd-to-delivery",
+      "current_role": "requirement-analyst",
+      "next_role": "frontend-implementer"
+    }
+  },
+  "instructions": {
+    "source": ".agents/roles/common/requirement-analyst.md",
+    "markdown": "# requirement-analyst"
+  }
+}

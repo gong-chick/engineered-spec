@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "support_files": [
+    ".agents/roles/common/missing-support-file.md"
+  ],
+  "roles": {
+    "task-orchestrator": {
+      "name": "任务主代理",
+      "status": "active",
+      "domains": ["orchestration"],
+      "source": ".agents/roles/common/task-orchestrator.md"
+    }
+  }
+}

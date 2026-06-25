@@ -1,0 +1,16 @@
+{
+  "skill_name": "ui-verification",
+  "evals": [
+    {
+      "id": "ui-verification-output-1",
+      "prompt": "用户要求对照设计稿验收页面并输出问题清单和反思。",
+      "files": [],
+      "expected_output": "输出应明确使用浏览器工具、说明对比方式，并沉淀 UI 问题清单与再验证要求。",
+      "assertions": [
+        "强调以实际页面对比设计稿而不是只看代码",
+        "包含问题清单产物",
+        "包含修复后重新验证要求"
+      ]
+    }
+  ]
+}

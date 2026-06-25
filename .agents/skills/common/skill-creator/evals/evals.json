@@ -1,0 +1,16 @@
+{
+  "skill_name": "skill-creator",
+  "evals": [
+    {
+      "id": "creator-output-1",
+      "prompt": "为一个新的 `route-audit` skill 设计目录、frontmatter 和最小工作流。",
+      "files": [],
+      "expected_output": "输出应包含官方兼容 frontmatter、When to use、workflow、gotchas、资源导航和 evals 规划。",
+      "assertions": [
+        "frontmatter 只使用官方允许字段",
+        "明确区分 should-trigger 和 should-not-trigger",
+        "给出 bundled resources 与 evals 的落点"
+      ]
+    }
+  ]
+}

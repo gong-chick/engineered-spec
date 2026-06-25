@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "rules": {
+    "demo-rule": {
+      "source": ".agents/rules/common/demo-rule.md",
+      "domains": ["governance"]
+    }
+  }
+}

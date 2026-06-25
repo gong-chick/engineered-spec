@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://br-ai-spec.local/contracts/asset-package.schema.json",
+  "title": "AssetPackage",
+  "type": "object",
+  "required": [
+    "assetId",
+    "assetType",
+    "name",
+    "version",
+    "source",
+    "checksum",
+    "files"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "assetId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assetType": {
+      "type": "string",
+      "enum": [
+        "rule",
+        "skill",
+        "agentProfile",
+        "workflow",
+        "hook",
+        "command"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checksum": {
+      "type": "string",
+      "minLength": 1
+    },
+    "compatibility": {
+      "type": "object",
+      "default": {}
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "checksum": {
+            "type": "string"
+          }
+        }
+      },
+      "default": []
+    },
+    "metadata": {
+      "type": "object",
+      "default": {}
+    }
+  }
+}

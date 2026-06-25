@@ -1,0 +1,54 @@
+# 依赖
+node_modules/
+
+# 构建产物
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 临时文件
+*.tmp
+*.log
+
+# 运行态数据(不提交到仓库)
+.ai-spec/
+.tmp/
+
+# 环境配置
+.env
+.env.local
+.env.*.local
+
+# npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 测试覆盖率
+coverage/
+.nyc_output/
+
+# 打包产物
+*.tgz
+
+# skills-lock
+skills-lock.json
+docs/AI工程方法论-团队分享版.md
+docs/AI工程方法论.md
+docs/规范驱动开发团队内部培训手册.md
+docs/ecc-整合与专家化实施方案.md
+docs/培训PPT讲稿提纲版.md
+docs/能力域分层命名建议.md
+docs/项目实操最小落地方案.md
+.DS_Store
+scripts/hub-sync-assets.config.json
+.omc/
+.omx/
+*.tgz

@@ -1,0 +1,68 @@
+name: expert-delivery
+version: 1
+description: 基于 spec-driven 扩展的专家协同交付流程，显式包含交付检查与迭代记录产物。
+
+artifacts:
+  - id: proposal
+    generates: proposal.md
+    description: 变更提案与执行边界
+    template: proposal.md
+    instruction: |
+      创建变更提案，说明为什么要做这项变更、当前范围包含什么、不包含什么，
+      以及在进入实现前必须明确的默认假设、约束和风险。
+    requires: []
+
+  - id: specs
+    generates: specs/**/*.md
+    description: 增量需求规范与验收场景
+    template: spec.md
+    instruction: |
+      在 specs/<domain>/spec.md 下创建一个或多个增量规范文件。
+      每份规范都必须定义清晰的需求和可验证场景，并与 proposal 保持一致。
+    requires:
+      - proposal
+
+  - id: design
+    generates: design.md
+    description: 技术设计与实现方案
+    template: design.md
+    instruction: |
+      创建技术设计文档，说明当前仓库中应如何落地这项变更。
+      优先复用现有结构，避免与本次变更无关的重构。
+    requires:
+      - proposal
+
+  - id: tasks
+    generates: tasks.md
+    description: 可执行任务清单
+    template: tasks.md
+    instruction: |
+      创建可交给实现专家执行的任务清单。
+      任务必须具体、可验证，并严格限定在已批准的变更范围内。
+    requires:
+      - specs
+      - design
+
+  - id: checklist
+    generates: checklist.md
+    description: 交付检查清单
+    template: checklist.md
+    instruction: |
+      创建交付检查清单，基于实现结果、tasks、specs 和项目规则记录通过项、
+      未通过项、阻断项以及是否建议继续推进或放行。
+    requires:
+      - tasks
+
+  - id: iterations
+    generates: iterations.md
+    description: 迭代记录与残留风险
+    template: iterations.md
+    instruction: |
+      记录本轮发现的问题、已采取的修正动作、残留风险，以及下一轮或后续跟进建议。
+    requires:
+      - checklist
+
+apply:
+  requires:
+    - tasks
+  tracks: tasks.md

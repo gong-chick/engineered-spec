@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "support_files": [],
+  "roles": {
+    "task-orchestrator": {
+      "name": "任务主代理",
+      "status": "active",
+      "domains": ["orchestration"],
+      "profiles": ["nest"],
+      "source": ".agents/roles/common/task-orchestrator.md",
+      "rule_ids": ["demo-rule"],
+      "skill_priority": ["demo-skill"],
+      "rule_contract_profiles": {
+        "default": {
+          "must_follow": ["按默认规则执行。"]
+        },
+        "nest": {
+          "must_follow": ["按 Nest 项目规则执行。"]
+        }
+      }
+    }
+  }
+}

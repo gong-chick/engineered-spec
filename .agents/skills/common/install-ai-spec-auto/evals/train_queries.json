@@ -1,0 +1,18 @@
+[
+  {
+    "query": "给当前项目安装 ai-spec-auto，并直接执行 init",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我把这套规范接入当前 Vue 项目，自动跑安装命令",
+    "should_trigger": true
+  },
+  {
+    "query": "当前项目已经装过了，帮我跑 check 看状态",
+    "should_trigger": false
+  },
+  {
+    "query": "执行 project-init，补 01 和 03",
+    "should_trigger": false
+  }
+]

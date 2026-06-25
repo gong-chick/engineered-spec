@@ -1,0 +1,18 @@
+[
+  {
+    "query": "从零创建一个处理 API 文档的 skill",
+    "should_trigger": true
+  },
+  {
+    "query": "给我搭一个新 skill 的目录和模板",
+    "should_trigger": true
+  },
+  {
+    "query": "重构已有 skill 的资源组织方式",
+    "should_trigger": false
+  },
+  {
+    "query": "审查一下这个 skill 为什么触发不稳定",
+    "should_trigger": false
+  }
+]

@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "skills": {
+    "archive-change": {
+      "source": ".agents/skills/common/archive-change/SKILL.md",
+      "domains": ["documentation"]
+    },
+    "create-proposal": {
+      "source": ".agents/skills/common/create-proposal/SKILL.md",
+      "domains": ["demand-design"]
+    },
+    "create-test": {
+      "source": ".agents/skills/common/create-test/SKILL.md",
+      "domains": ["testing"]
+    },
+    "config-and-secret-scan": {
+      "source": ".agents/skills/common/config-and-secret-scan/SKILL.md",
+      "domains": ["governance"]
+    },
+    "dependency-impact-graph": {
+      "source": ".agents/skills/common/dependency-impact-graph/SKILL.md",
+      "domains": ["engineering"]
+    },
+    "execute-task": {
+      "source": ".agents/skills/common/execute-task/SKILL.md",
+      "domains": ["governance"]
+    },
+    "find-skills": {
+      "source": ".agents/skills/common/find-skills/SKILL.md",
+      "domains": ["orchestration"]
+    },
+    "install-ai-spec-auto": {
+      "source": ".agents/skills/common/install-ai-spec-auto/SKILL.md",
+      "domains": ["orchestration"]
+    },
+    "project-init": {
+      "source": ".agents/skills/common/project-init/SKILL.md",
+      "domains": ["documentation"]
+    },
+    "skill-creator": {
+      "source": ".agents/skills/common/skill-creator/SKILL.md",
+      "domains": ["documentation"]
+    },
+    "skill-optimizer": {
+      "source": ".agents/skills/common/skill-optimizer/SKILL.md",
+      "domains": ["documentation"]
+    },
+    "using-superpowers": {
+      "source": ".agents/skills/common/using-superpowers/SKILL.md",
+      "domains": ["orchestration"]
+    },
+    "ui-ux-pro-max": {
+      "source": ".agents/skills/domains/ui-ux-pro-max/SKILL.md",
+      "domains": ["demand-design"]
+    },
+    "design-analysis": {
+      "source": ".agents/skills/domains/web/design-analysis/SKILL.md",
+      "domains": ["demand-design"],
+      "project_types": ["frontend"]
+    },
+    "route-permission-map": {
+      "source": ".agents/skills/domains/web/route-permission-map/SKILL.md",
+      "domains": ["governance"],
+      "project_types": ["frontend"]
+    },
+    "ui-verification": {
+      "source": ".agents/skills/domains/web/ui-verification/SKILL.md",
+      "domains": ["testing"],
+      "project_types": ["frontend"]
+    },
+    "web-design-guidelines": {
+      "source": ".agents/skills/domains/web/web-design-guidelines/SKILL.md",
+      "domains": ["testing"],
+      "project_types": ["frontend"]
+    },
+    "create-api": {
+      "sourceByProfile": {
+        "react": ".agents/skills/profiles/react/create-api/SKILL.md",
+        "vue": ".agents/skills/profiles/vue/create-api/SKILL.md"
+      },
+      "domains": ["engineering", "governance"]
+    },
+    "create-component": {
+      "sourceByProfile": {
+        "react": ".agents/skills/profiles/react/create-component/SKILL.md",
+        "vue": ".agents/skills/profiles/vue/create-component/SKILL.md"
+      },
+      "domains": ["engineering"]
+    },
+    "create-route": {
+      "sourceByProfile": {
+        "react": ".agents/skills/profiles/react/create-route/SKILL.md",
+        "vue": ".agents/skills/profiles/vue/create-route/SKILL.md"
+      },
+      "domains": ["engineering"]
+    },
+    "create-store": {
+      "sourceByProfile": {
+        "react": ".agents/skills/profiles/react/create-store/SKILL.md",
+        "vue": ".agents/skills/profiles/vue/create-store/SKILL.md"
+      },
+      "domains": ["engineering"]
+    },
+    "create-view": {
+      "sourceByProfile": {
+        "vue": ".agents/skills/profiles/vue/create-view/SKILL.md"
+      },
+      "domains": ["engineering"]
+    },
+    "theme-variables": {
+      "sourceByProfile": {
+        "react": ".agents/skills/profiles/react/theme-variables/SKILL.md",
+        "vue": ".agents/skills/profiles/vue/theme-variables/SKILL.md"
+      },
+      "domains": ["engineering"]
+    },
+    "vercel-composition-patterns": {
+      "source": ".agents/skills/profiles/react/vercel-composition-patterns/SKILL.md",
+      "domains": ["engineering"]
+    },
+    "vercel-react-best-practices": {
+      "source": ".agents/skills/profiles/react/vercel-react-best-practices/SKILL.md",
+      "domains": ["engineering"]
+    },
+    "vue-best-practices": {
+      "source": ".agents/skills/profiles/vue/vue-best-practices/SKILL.md",
+      "domains": ["engineering"]
+    }
+  }
+}

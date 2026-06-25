@@ -1,0 +1,16 @@
+{
+  "skill_name": "skill-optimizer",
+  "evals": [
+    {
+      "id": "optimizer-output-1",
+      "prompt": "审查一个现有 skill，指出 description、workflow 和 resources 的问题，并给出分优先级优化计划。",
+      "files": [],
+      "expected_output": "输出应先给审查结论，再给按优先级排序的优化计划，不直接改文件。",
+      "assertions": [
+        "先审查后计划",
+        "指出触发、结构和资源组织问题",
+        "保留等待用户确认的门槛"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ai-spec-auto文档</title>
+  <style>
+    :root {
+      --bg: #f4efe5;
+      --panel: rgba(255, 252, 246, 0.88);
+      --panel-strong: #fffaf2;
+      --line: rgba(35, 48, 67, 0.12);
+      --text: #1f2a37;
+      --muted: #667085;
+      --brand: #0f766e;
+      --brand-soft: rgba(15, 118, 110, 0.12);
+      --accent: #b45309;
+      --shadow: 0 18px 50px rgba(35, 48, 67, 0.12);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --mono: "SFMono-Regular", "Menlo", "Monaco", "Consolas", monospace;
+      --sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      --serif: "Songti SC", "STSong", "Noto Serif SC", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(180, 83, 9, 0.14), transparent 26%),
+        radial-gradient(circle at right 20%, rgba(15, 118, 110, 0.13), transparent 24%),
+        linear-gradient(180deg, #f8f3ea 0%, #f3ede2 50%, #efe8db 100%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 24px;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .sidebar,
+    .main {
+      backdrop-filter: blur(18px);
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow: var(--shadow);
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      border-radius: var(--radius);
+      position: sticky;
+      top: 24px;
+      height: calc(100vh - 48px);
+      overflow: hidden;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brand);
+      font-weight: 700;
+    }
+
+    .brand::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--brand), #14b8a6);
+      box-shadow: 0 0 0 6px rgba(20, 184, 166, 0.16);
+    }
+
+    .title {
+      margin: 18px 0 10px;
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin: 0 0 20px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .nav {
+      flex: 1;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .nav-section {
+      margin-bottom: 18px;
+    }
+
+    .nav-label {
+      margin: 0 0 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.46);
+      border: 1px solid transparent;
+      transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.82);
+      border-color: rgba(15, 118, 110, 0.16);
+    }
+
+    .nav-link.is-active {
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.12), rgba(180, 83, 9, 0.09));
+      border-color: rgba(15, 118, 110, 0.22);
+    }
+
+    .nav-link strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .nav-link span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .sidebar-footer {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .sidebar-footer a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    .main {
+      border-radius: calc(var(--radius) + 4px);
+      padding: 28px;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 24px 24px 18px;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(15, 118, 110, 0.12), rgba(180, 83, 9, 0.08)),
+        var(--panel-strong);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+    }
+
+    .hero-copy {
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 16px 0 10px;
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 42px);
+      line-height: 1.15;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .hero-meta {
+      display: grid;
+      gap: 10px;
+      min-width: 220px;
+    }
+
+    .meta-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+    }
+
+    .meta-card strong {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .meta-card span,
+    .meta-card a {
+      font-size: 14px;
+      line-height: 1.6;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .article {
+      padding: 30px;
+      border-radius: var(--radius);
+      background: var(--panel-strong);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    }
+
+    .content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 22px;
+      align-items: start;
+      margin-top: 22px;
+    }
+
+    .outline {
+      position: sticky;
+      top: 28px;
+    }
+
+    .outline-card {
+      padding: 20px 18px;
+      border-radius: var(--radius);
+      background: rgba(255, 250, 242, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .outline-card[hidden] {
+      display: none;
+    }
+
+    .outline-label {
+      margin: 0 0 14px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .outline-list {
+      display: grid;
+      gap: 4px;
+    }
+
+    .outline-link {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--muted);
+      transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .outline-link:hover {
+      color: var(--text);
+      background: rgba(15, 118, 110, 0.08);
+      transform: translateX(2px);
+    }
+
+    .outline-link.is-active {
+      color: var(--text);
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.1), rgba(180, 83, 9, 0.08));
+    }
+
+    .outline-link[data-depth="0"] {
+      margin-bottom: 10px;
+      padding: 8px 10px 10px 14px;
+      border-left: 3px solid rgba(31, 42, 55, 0.82);
+      border-radius: 0 12px 12px 0;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .outline-link[data-depth="0"]:hover {
+      transform: none;
+    }
+
+    .outline-link[data-depth="1"] {
+      padding-left: 10px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .outline-link[data-depth="2"] {
+      padding-left: 22px;
+    }
+
+    .outline-link[data-depth="3"] {
+      padding-left: 34px;
+      font-size: 14px;
+    }
+
+    .outline-link[data-depth="4"] {
+      padding-left: 46px;
+      font-size: 13px;
+    }
+
+    .outline-marker {
+      flex: 0 0 auto;
+      width: 7px;
+      height: 7px;
+      margin-top: 0.58em;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, 0.18);
+    }
+
+    .outline-link.is-active .outline-marker {
+      background: var(--brand);
+      box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.12);
+    }
+
+    .outline-link[data-depth="0"] .outline-marker {
+      display: none;
+    }
+
+    .outline-number {
+      flex: 0 0 auto;
+      min-width: 2.8em;
+      margin-top: 0.05em;
+      color: var(--brand);
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .outline-link[data-depth="1"] .outline-number {
+      min-width: 1.8em;
+    }
+
+    .outline-link[data-depth="0"] .outline-number {
+      display: none;
+    }
+
+    .outline-text {
+      display: block;
+      min-width: 0;
+      line-height: 1.55;
+      word-break: break-word;
+    }
+
+    .outline-empty {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .article-empty {
+      margin: 40px 0;
+      padding: 24px;
+      border-radius: 18px;
+      background: rgba(102, 112, 133, 0.08);
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .markdown {
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .markdown> :first-child {
+      margin-top: 0;
+    }
+
+    .markdown h1,
+    .markdown h2,
+    .markdown h3,
+    .markdown h4,
+    .markdown h5,
+    .markdown h6 {
+      font-family: var(--serif);
+      line-height: 1.3;
+      margin: 1.8em 0 0.7em;
+      scroll-margin-top: 24px;
+    }
+
+    .markdown h1 {
+      font-size: 34px;
+      margin-top: 0.1em;
+    }
+
+    .markdown h2 {
+      font-size: 26px;
+      padding-bottom: 0.35em;
+      border-bottom: 1px solid rgba(35, 48, 67, 0.09);
+    }
+
+    .markdown h3 {
+      font-size: 22px;
+    }
+
+    .markdown p,
+    .markdown ul,
+    .markdown ol,
+    .markdown blockquote,
+    .markdown table,
+    .markdown pre {
+      margin: 1em 0;
+    }
+
+    .markdown ul,
+    .markdown ol {
+      padding-left: 1.4em;
+    }
+
+    .markdown li+li {
+      margin-top: 0.45em;
+    }
+
+    .markdown blockquote {
+      padding: 14px 18px;
+      border-left: 4px solid var(--accent);
+      background: rgba(180, 83, 9, 0.08);
+      border-radius: 0 16px 16px 0;
+      color: #5b4635;
+    }
+
+    .markdown code {
+      padding: 0.16em 0.42em;
+      border-radius: 8px;
+      font-family: var(--mono);
+      font-size: 0.92em;
+      background: rgba(15, 118, 110, 0.1);
+      color: #115e59;
+    }
+
+    .markdown pre {
+      overflow: auto;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: #172033;
+      color: #ecf0f6;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .markdown pre code {
+      padding: 0;
+      background: transparent;
+      color: inherit;
+      font-size: 14px;
+    }
+
+    .markdown table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(35, 48, 67, 0.08);
+    }
+
+    .markdown th,
+    .markdown td {
+      padding: 13px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(35, 48, 67, 0.08);
+    }
+
+    .markdown th {
+      background: rgba(15, 118, 110, 0.08);
+      font-size: 14px;
+    }
+
+    .markdown tr:nth-child(even) td {
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .markdown hr {
+      border: 0;
+      border-top: 1px solid rgba(35, 48, 67, 0.12);
+      margin: 2em 0;
+    }
+
+    .markdown a {
+      color: var(--brand);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    @media (max-width: 1080px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        height: auto;
+      }
+
+      .hero {
+        flex-direction: column;
+      }
+
+      .hero-meta {
+        width: 100%;
+      }
+
+      .content-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .outline {
+        position: static;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        padding: 14px;
+        gap: 14px;
+      }
+
+      .sidebar,
+      .main,
+      .hero,
+      .article,
+      .outline-card {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .main {
+        padding-top: 18px;
+        padding-bottom: 18px;
+      }
+
+      .markdown {
+        font-size: 15px;
+      }
+
+      .markdown h1 {
+        font-size: 28px;
+      }
+
+      .markdown h2 {
+        font-size: 24px;
+      }
+
+      .outline-link[data-depth="2"] {
+        padding-left: 18px;
+      }
+
+      .outline-link[data-depth="3"] {
+        padding-left: 26px;
+      }
+
+      .outline-link[data-depth="4"] {
+        padding-left: 34px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">Stage Four</div>
+      <h2 class="title">ai-spec-auto文档</h2>
+      <p class="subtitle">
+        当前页面会直接读取 `docs(文档目录)` 下的 `Markdown(标记语言)` 文件，并在浏览器里完成基础渲染。
+      </p>
+      <div class="nav">
+        <section class="nav-section">
+          <p class="nav-label">默认阅读路径</p>
+          <div class="nav-list" id="default-nav-list"></div>
+        </section>
+        <section class="nav-section">
+          <p class="nav-label">深入阅读</p>
+          <div class="nav-list" id="deep-nav-list"></div>
+        </section>
+      </div>
+      <div class="sidebar-footer">
+        <a href="/docs/four/" id="home-link">回到默认</a>
+      </div>
+    </aside>
+    <main class="main">
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Docs Viewer</span>
+          <h1 id="hero-title">ai-spec-auto文档</h1>
+          <p id="hero-description"></p>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-card">
+            <strong>当前文档</strong>
+            <span id="current-file">four/README.md</span>
+          </div>
+          <div class="meta-card">
+            <strong>原始文件</strong>
+            <a id="raw-link" href="/docs/four/README.md" target="_blank" rel="noreferrer">/docs/four/README.md</a>
+          </div>
+        </div>
+      </section>
+      <section class="content-layout">
+        <section class="article">
+          <div id="content" class="markdown"></div>
+        </section>
+        <aside class="outline">
+          <div class="outline-card" id="outline-card">
+            <p class="outline-label">大纲</p>
+            <div class="outline-list" id="outline-list"></div>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const HOME_FILE = "four/README.md";
+    const DEFAULT_NAV_ITEMS = [
+      { path: "four/README.md", title: "文档", desc: "默认阅读与阅读路径" },
+      { path: "four/开发最佳实践指南.md", title: "开发最佳实践指南", desc: "面向开发者的默认起点" },
+      { path: "quick-start.md", title: "五分钟快速上手", desc: "快速了解安装后的目录与最小使用路径" },
+      { path: "four/需求示例-从发起到归档.md", title: "需求示例", desc: "从发起需求到归档的完整链路" },
+      { path: "four/小需求与补丁修正指南.md", title: "小需求与补丁修正指南", desc: "轻量修正场景的建议路径" }
+    ];
+    const DEEP_NAV_ITEMS = [
+      { path: "four/Hub资产同步脚本说明.md", title: "Hub 资产同步脚本说明", desc: "资产同步与脚本侧说明" },
+      { path: "four/架构设计与治理说明.md", title: "架构设计与治理说明", desc: "适合维护者与评审的深水区文档" }
+    ];
+
+    const docsRootUrl = new URL("../", window.location.href);
+    const defaultNavList = document.getElementById("default-nav-list");
+    const deepNavList = document.getElementById("deep-nav-list");
+    const content = document.getElementById("content");
+    const outlineCard = document.getElementById("outline-card");
+    const outlineList = document.getElementById("outline-list");
+    const currentFileNode = document.getElementById("current-file");
+    const rawLinkNode = document.getElementById("raw-link");
+    const heroTitleNode = document.getElementById("hero-title");
+    const heroDescriptionNode = document.getElementById("hero-description");
+    let outlineEntries = [];
+    let outlineLinks = [];
+
+    function encodePath(path) {
+      return path
+        .split("/")
+        .map((segment) => encodeURIComponent(segment))
+        .join("/");
+    }
+
+    function decodePathname(pathname) {
+      return pathname
+        .split("/")
+        .map((segment) => decodeURIComponent(segment))
+        .join("/");
+    }
+
+    function escapeHtml(text) {
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function slugify(text) {
+      const slug = text
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/[^\w\u4e00-\u9fa5-]/g, "");
+      return slug || "section";
+    }
+
+    function buildHeadingId(text, slugCounts) {
+      const baseSlug = slugify(text);
+      const currentCount = slugCounts.get(baseSlug) || 0;
+      slugCounts.set(baseSlug, currentCount + 1);
+      return currentCount === 0 ? baseSlug : `${baseSlug}-${currentCount + 1}`;
+    }
+
+    function splitTableRow(row) {
+      let text = row.trim();
+      if (text.startsWith("|")) {
+        text = text.slice(1);
+      }
+      if (text.endsWith("|")) {
+        text = text.slice(0, -1);
+      }
+      return text.split("|").map((cell) => cell.trim());
+    }
+
+    function isTableDivider(line) {
+      return /^\|?[\s:-]+(?:\|[\s:-]+)+\|?$/.test(line.trim());
+    }
+
+    function normalizeToDocsPath(path) {
+      if (!path) {
+        return HOME_FILE;
+      }
+      try {
+        const resolved = new URL(encodePath(path), docsRootUrl);
+        const relative = resolved.pathname.replace(docsRootUrl.pathname, "");
+        return decodePathname(relative);
+      } catch (error) {
+        return HOME_FILE;
+      }
+    }
+
+    function getCurrentFile() {
+      const params = new URLSearchParams(window.location.search);
+      return normalizeToDocsPath(params.get("file") || HOME_FILE);
+    }
+
+    function buildViewerHref(path, hash) {
+      const target = new URL(window.location.href);
+      target.searchParams.set("file", normalizeToDocsPath(path));
+      target.hash = hash || "";
+      return target.toString();
+    }
+
+    function resolveRelativeMarkdownPath(href, currentFile) {
+      const currentUrl = new URL(encodePath(currentFile), docsRootUrl);
+      const resolvedUrl = new URL(href, currentUrl);
+      const relativePath = resolvedUrl.pathname.replace(docsRootUrl.pathname, "");
+      return decodePathname(relativePath);
+    }
+
+    function buildLinkHtml(label, href, currentFile) {
+      const trimmedHref = href.trim();
+      const hashIndex = trimmedHref.indexOf("#");
+      const rawPath = hashIndex >= 0 ? trimmedHref.slice(0, hashIndex) : trimmedHref;
+      const hash = hashIndex >= 0 ? trimmedHref.slice(hashIndex) : "";
+      const safeLabel = escapeHtml(label);
+
+      if (!rawPath && hash) {
+        return `<a href="${hash}">${safeLabel}</a>`;
+      }
+
+      if (/^(https?:|mailto:)/i.test(trimmedHref)) {
+        return `<a href="${trimmedHref}" target="_blank" rel="noreferrer">${safeLabel}</a>`;
+      }
+
+      if (rawPath.endsWith(".md")) {
+        const nextFile = resolveRelativeMarkdownPath(rawPath, currentFile);
+        return `<a href="${buildViewerHref(nextFile, hash)}">${safeLabel}</a>`;
+      }
+
+      const resolved = new URL(trimmedHref, new URL(encodePath(currentFile), docsRootUrl));
+      return `<a href="${resolved.toString()}" target="_blank" rel="noreferrer">${safeLabel}</a>`;
+    }
+
+    function renderInline(text, currentFile) {
+      const tokens = [];
+      const stash = (html) => {
+        const token = `@@INLINE_TOKEN_${tokens.length}@@`;
+        tokens.push(html);
+        return token;
+      };
+
+      let html = text;
+
+      html = html.replace(/`([^`]+)`/g, (_, code) => stash(`<code>${escapeHtml(code)}</code>`));
+      html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => stash(buildLinkHtml(label, href, currentFile)));
+      html = escapeHtml(html);
+      html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+      html = html.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+      html = html.replace(/@@INLINE_TOKEN_(\d+)@@/g, (_, index) => tokens[Number(index)] || "");
+
+      return html;
+    }
+
+    function renderMarkdown(markdown, currentFile) {
+      const lines = markdown.replace(/\r\n/g, "\n").split("\n");
+      const blocks = [];
+      const slugCounts = new Map();
+
+      for (let i = 0; i < lines.length;) {
+        const line = lines[i];
+        const trimmed = line.trim();
+
+        if (!trimmed) {
+          i += 1;
+          continue;
+        }
+
+        if (/^```/.test(trimmed)) {
+          const language = trimmed.replace(/^```/, "").trim();
+          const codeLines = [];
+          i += 1;
+          while (i < lines.length && !/^```/.test(lines[i].trim())) {
+            codeLines.push(lines[i]);
+            i += 1;
+          }
+          if (i < lines.length) {
+            i += 1;
+          }
+          blocks.push(
+            `<pre><code class="language-${escapeHtml(language || "plain")}">${escapeHtml(codeLines.join("\n"))}</code></pre>`
+          );
+          continue;
+        }
+
+        if (/^#{1,6}\s+/.test(trimmed)) {
+          const level = trimmed.match(/^#+/)[0].length;
+          const text = trimmed.replace(/^#{1,6}\s+/, "");
+          const headingId = buildHeadingId(text, slugCounts);
+          blocks.push(
+            `<h${level} id="${headingId}">${renderInline(text, currentFile)}</h${level}>`
+          );
+          i += 1;
+          continue;
+        }
+
+        if (/^(-{3,}|\*{3,})$/.test(trimmed)) {
+          blocks.push("<hr>");
+          i += 1;
+          continue;
+        }
+
+        if (trimmed.startsWith(">")) {
+          const quoteLines = [];
+          while (i < lines.length && lines[i].trim().startsWith(">")) {
+            quoteLines.push(lines[i].trim().replace(/^>\s?/, ""));
+            i += 1;
+          }
+          blocks.push(
+            `<blockquote>${quoteLines
+              .map((item) => `<p>${renderInline(item, currentFile)}</p>`)
+              .join("")}</blockquote>`
+          );
+          continue;
+        }
+
+        if (line.includes("|") && i + 1 < lines.length && isTableDivider(lines[i + 1])) {
+          const headers = splitTableRow(line);
+          const rows = [];
+          i += 2;
+          while (i < lines.length && lines[i].includes("|") && lines[i].trim()) {
+            rows.push(splitTableRow(lines[i]));
+            i += 1;
+          }
+
+          const thead = `<thead><tr>${headers
+            .map((cell) => `<th>${renderInline(cell, currentFile)}</th>`)
+            .join("")}</tr></thead>`;
+          const tbody = `<tbody>${rows
+            .map(
+              (row) =>
+                `<tr>${row
+                  .map((cell) => `<td>${renderInline(cell, currentFile)}</td>`)
+                  .join("")}</tr>`
+            )
+            .join("")}</tbody>`;
+
+          blocks.push(`<table>${thead}${tbody}</table>`);
+          continue;
+        }
+
+        if (/^[-*]\s+/.test(trimmed)) {
+          const items = [];
+          while (i < lines.length && /^[-*]\s+/.test(lines[i].trim())) {
+            items.push(lines[i].trim().replace(/^[-*]\s+/, ""));
+            i += 1;
+          }
+          blocks.push(`<ul>${items.map((item) => `<li>${renderInline(item, currentFile)}</li>`).join("")}</ul>`);
+          continue;
+        }
+
+        if (/^\d+\.\s+/.test(trimmed)) {
+          const items = [];
+          while (i < lines.length && /^\d+\.\s+/.test(lines[i].trim())) {
+            items.push(lines[i].trim().replace(/^\d+\.\s+/, ""));
+            i += 1;
+          }
+          blocks.push(`<ol>${items.map((item) => `<li>${renderInline(item, currentFile)}</li>`).join("")}</ol>`);
+          continue;
+        }
+
+        const paragraphLines = [];
+        while (
+          i < lines.length &&
+          lines[i].trim() &&
+          !/^#{1,6}\s+/.test(lines[i].trim()) &&
+          !/^```/.test(lines[i].trim()) &&
+          !/^[-*]\s+/.test(lines[i].trim()) &&
+          !/^\d+\.\s+/.test(lines[i].trim()) &&
+          !/^(-{3,}|\*{3,})$/.test(lines[i].trim()) &&
+          !lines[i].trim().startsWith(">") &&
+          !(lines[i].includes("|") && i + 1 < lines.length && isTableDivider(lines[i + 1]))
+        ) {
+          paragraphLines.push(lines[i].trim());
+          i += 1;
+        }
+
+        blocks.push(`<p>${renderInline(paragraphLines.join(" "), currentFile)}</p>`);
+      }
+
+      return blocks.join("\n");
+    }
+
+    function renderNavItems(container, items, activeFile) {
+      container.innerHTML = items.map((item) => {
+        const activeClass = item.path === activeFile ? "nav-link is-active" : "nav-link";
+        return `
+          <a class="${activeClass}" href="${buildViewerHref(item.path)}">
+            <strong>${item.title}</strong>
+            <span>${item.desc}</span>
+          </a>
+        `;
+      }).join("");
+    }
+
+    function renderNav(activeFile) {
+      renderNavItems(defaultNavList, DEFAULT_NAV_ITEMS, activeFile);
+      renderNavItems(deepNavList, DEEP_NAV_ITEMS, activeFile);
+    }
+
+    function scrollToHeadingById(id, options = {}) {
+      const target = document.getElementById(id);
+      if (!target) {
+        return;
+      }
+
+      if (options.updateUrl !== false) {
+        const nextUrl = new URL(window.location.href);
+        nextUrl.hash = id;
+        history.replaceState(null, "", nextUrl.toString());
+      }
+
+      target.scrollIntoView({
+        behavior: options.behavior || "smooth",
+        block: "start"
+      });
+      updateActiveOutline(id);
+    }
+
+    function updateActiveOutline(forcedId) {
+      if (!outlineEntries.length) {
+        return;
+      }
+
+      let activeId = forcedId || "";
+
+      if (!activeId) {
+        const activationOffset = 180;
+        for (const entry of outlineEntries) {
+          if (entry.element.getBoundingClientRect().top - activationOffset <= 0) {
+            activeId = entry.id;
+          } else {
+            break;
+          }
+        }
+      }
+
+      if (!activeId) {
+        activeId = outlineEntries[0].id;
+      }
+
+      outlineLinks.forEach((link) => {
+        link.classList.toggle("is-active", link.dataset.headingId === activeId);
+      });
+    }
+
+    function renderOutline() {
+      const headings = Array.from(content.querySelectorAll("h1, h2, h3, h4"));
+      const rawEntries = headings.map((element) => ({
+        id: element.id,
+        level: Number(element.tagName.slice(1)),
+        text: element.textContent.trim(),
+        element
+      })).filter((entry) => entry.id && entry.text);
+
+      if (!rawEntries.length) {
+        outlineCard.hidden = false;
+        outlineList.innerHTML = `<p class="outline-empty">当前文档暂无可跳转标题。</p>`;
+        outlineLinks = [];
+        outlineEntries = [];
+        return;
+      }
+
+      const useRootHeading = rawEntries[0].level === 1;
+      const baseLevel = useRootHeading ? 2 : Math.min(...rawEntries.map((entry) => entry.level));
+      const counters = [0, 0, 0, 0];
+      let previousDepth = 0;
+
+      outlineEntries = rawEntries.map((entry, index) => {
+        if (useRootHeading && index === 0) {
+          return {
+            ...entry,
+            depth: 0,
+            number: "",
+            isRoot: true
+          };
+        }
+
+        const actualDepth = Math.max(1, entry.level - baseLevel + 1);
+        const depth = Math.min(counters.length, actualDepth > previousDepth + 1 ? previousDepth + 1 : actualDepth);
+
+        counters[depth - 1] += 1;
+        for (let i = depth; i < counters.length; i += 1) {
+          counters[i] = 0;
+        }
+        previousDepth = depth;
+
+        return {
+          ...entry,
+          depth,
+          number: counters.slice(0, depth).join("."),
+          isRoot: false
+        };
+      });
+
+      outlineCard.hidden = false;
+      outlineList.innerHTML = outlineEntries.map((entry) => `
+        <a
+          class="outline-link"
+          data-heading-id="${entry.id}"
+          data-depth="${entry.depth}"
+          href="#${entry.id}"
+        >
+          <span class="outline-marker" aria-hidden="true"></span>
+          <span class="outline-number">${entry.number ? escapeHtml(entry.number) : ""}</span>
+          <span class="outline-text">${escapeHtml(entry.text)}</span>
+        </a>
+      `).join("");
+
+      outlineLinks = Array.from(outlineList.querySelectorAll(".outline-link"));
+      outlineLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          scrollToHeadingById(link.dataset.headingId, { updateUrl: true, behavior: "smooth" });
+        });
+      });
+      updateActiveOutline();
+    }
+
+    function handleHashChange() {
+      const anchor = decodeURIComponent(window.location.hash.slice(1));
+      if (anchor) {
+        scrollToHeadingById(anchor, { updateUrl: false, behavior: "smooth" });
+      }
+    }
+
+    async function loadDocument() {
+      const currentFile = getCurrentFile();
+      const requestUrl = new URL(encodePath(currentFile), docsRootUrl);
+
+      renderNav(currentFile);
+      currentFileNode.textContent = currentFile;
+      rawLinkNode.textContent = requestUrl.pathname;
+      rawLinkNode.href = requestUrl.toString();
+
+      try {
+        const response = await fetch(requestUrl.toString(), { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const markdown = await response.text();
+        content.innerHTML = renderMarkdown(markdown, currentFile);
+        renderOutline();
+        const firstHeading = content.querySelector("h1, h2, h3");
+        heroTitleNode.textContent = firstHeading ? firstHeading.textContent : "ai-spec-auto文档";
+        heroDescriptionNode.textContent =
+          currentFile === HOME_FILE
+            ? ""
+            : `当前展示的是 ${currentFile}，页面支持继续跳转到相关 Markdown(标记语言) 文档。`;
+
+        if (window.location.hash) {
+          const anchor = decodeURIComponent(window.location.hash.slice(1));
+          scrollToHeadingById(anchor, { updateUrl: false, behavior: "auto" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "auto" });
+          updateActiveOutline();
+        }
+      } catch (error) {
+        heroTitleNode.textContent = "文档加载失败";
+        heroDescriptionNode.textContent = "请确认 nginx(静态服务/反向代理) 已重载，且目标 Markdown(标记语言) 文件仍然存在。";
+        outlineCard.hidden = true;
+        content.innerHTML = `
+          <div class="article-empty">
+            无法读取 <code>${escapeHtml(currentFile)}</code><br>
+            失败原因：<code>${escapeHtml(String(error.message || error))}</code>
+          </div>
+        `;
+      }
+    }
+
+    window.addEventListener("popstate", loadDocument);
+    window.addEventListener("hashchange", handleHashChange);
+    window.addEventListener("scroll", () => updateActiveOutline(), { passive: true });
+    loadDocument();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+[
+  {
+    "query": "分析这个仓库的技术栈并刷新项目概述",
+    "should_trigger": true
+  },
+  {
+    "query": "把 04/05/06/07/09 按项目事实补齐",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我做 UI 验收",
+    "should_trigger": false
+  },
+  {
+    "query": "归档当前变更",
+    "should_trigger": false
+  }
+]
