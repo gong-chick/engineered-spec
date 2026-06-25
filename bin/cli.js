@@ -1,10 +1,6 @@
 #!/usr/bin/env node
-import path from 'path';
-import fs from 'fs';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const path = require('path');
+const fs = require('fs');
 const pkgRoot = path.join(__dirname, '..');
 let args = process.argv.slice(2);
 const env = { ...process.env, ENGINEERED_SPEC_LOCAL: pkgRoot };
@@ -54,9 +50,7 @@ function shouldUseIntegrityCommand(args, cwd) {
 (async () => {
   try {
     if (args.length > 0 && VERSION_FLAGS.has(args[0])) {
-      const pkgPath = path.join(pkgRoot, 'package.json');
-      const pkgContent = fs.readFileSync(pkgPath, 'utf-8');
-      const pkg = JSON.parse(pkgContent);
+      const pkg = require(path.join(pkgRoot, 'package.json'));
       console.log(pkg.version);
       process.exit(0);
     }
@@ -65,7 +59,7 @@ function shouldUseIntegrityCommand(args, cwd) {
     // 任何失败都会静默降级为继续跑当前 CLI，不影响主流程。
     if (args[0] === 'update') {
       try {
-        const selfUpgrade = await import('./self-upgrade.js');
+        const selfUpgrade = require('./self-upgrade');
         const result = selfUpgrade.maybeSelfUpgradeForUpdate({
           pkgRoot,
           args,
@@ -85,7 +79,7 @@ function shouldUseIntegrityCommand(args, cwd) {
 
     if (env.AI_SPEC_SKIP_LAUNCHER_SYNC !== '1') {
       try {
-        const runtimeLauncher = await import('./runtime-launcher.js');
+        const runtimeLauncher = require('./runtime-launcher');
         runtimeLauncher.ensureGlobalLauncher({
           pkgRoot,
           env,
@@ -96,82 +90,82 @@ function shouldUseIntegrityCommand(args, cwd) {
     }
 
     if (args[0] === 'scan') {
-      const scanCommand = await import('./scan.js');
+      const scanCommand = require('./scan');
       process.exit(await scanCommand.main(args.slice(1)));
     }
 
     if (shouldUseRecommendInit(args, opts.cwd)) {
-      const initCommand = await import('./init-command.js');
+      const initCommand = require('./init-command');
       process.exit(await initCommand.main(args.slice(1)));
     }
 
     if (shouldUseIntegrityCommand(args, opts.cwd)) {
-      const command = args[0] === 'sync' ? await import('./sync-command.js') : await import('./check-command.js');
+      const command = args[0] === 'sync' ? require('./sync-command') : require('./check-command');
       process.exit(await command.main(args.slice(1)));
     }
 
     if (args[0] === 'guard') {
-      const guardCommand = await import('./guard-command.js');
+      const guardCommand = require('./guard-command');
       process.exit(await guardCommand.main(args.slice(1)));
     }
 
     if (args[0] === 'context') {
-      const contextCommand = await import('./context-command.js');
+      const contextCommand = require('./context-command');
       process.exit(await contextCommand.main(args.slice(1)));
     }
 
     if (args[0] === 'worktree') {
-      const worktreeCommand = await import('./worktree-command.js');
+      const worktreeCommand = require('./worktree-command');
       process.exit(await worktreeCommand.main(args.slice(1)));
     }
 
     if (args[0] === 'executor') {
-      const executorCommand = await import('./executor-command.js');
+      const executorCommand = require('./executor-command');
       process.exit(await executorCommand.main(args.slice(1)));
     }
 
     if (args[0] === 'spec-start') {
-      const specCommand = await import('./spec-command.js');
+      const specCommand = require('./spec-command');
       process.exit(await specCommand.mainStart(args.slice(1)));
     }
 
     if (args[0] === 'spec-status') {
-      const specCommand = await import('./spec-command.js');
+      const specCommand = require('./spec-command');
       process.exit(await specCommand.mainStatus(args.slice(1)));
     }
 
     if (args[0] === 'spec-continue') {
-      const specCommand = await import('./spec-command.js');
+      const specCommand = require('./spec-command');
       process.exit(await specCommand.mainContinue(args.slice(1)));
     }
 
     if (args[0] === 'spec-list') {
-      const specCommand = await import('./spec-command.js');
+      const specCommand = require('./spec-command');
       process.exit(await specCommand.mainList(args.slice(1)));
     }
 
     if (args[0] === 'spec-detail') {
-      const specCommand = await import('./spec-command.js');
+      const specCommand = require('./spec-command');
       process.exit(await specCommand.mainSpecStatus(args.slice(1)));
     }
 
     if (args[0] === 'repair') {
-      const repairCommand = await import('./repair-command.js');
+      const repairCommand = require('./repair-command');
       process.exit(await repairCommand.main(args.slice(1)));
     }
 
     if (args[0] === 'report') {
-      const reportCommand = await import('./report-command.js');
+      const reportCommand = require('./report-command');
       process.exit(await reportCommand.main(args.slice(1)));
     }
 
     if (args.length === 0 || INSTALL_COMMANDS.has(args[0])) {
-      const installWorkflow = await import('./install-workflow.js');
+      const installWorkflow = require('./install-workflow');
       // 切面：遥测仅观测，不改变 main(args) 的返回值/副作用/异常。
       // 模块加载/运行失败均自动降级为透明 wrap，主流程零影响。
       let telemetry = { wrap: function (_c, fn) { return fn(); } };
       try {
-        telemetry = await import('./telemetry.js');
+        telemetry = require('./telemetry');
       } catch (_error) {
         // 整个 telemetry 目录被移除或加载失败时，保持透明 wrap。
       }
@@ -181,29 +175,29 @@ function shouldUseIntegrityCommand(args, cwd) {
     }
 
     if (args[0] === 'runtime-state') {
-      const runtimeState = await import('./runtime-state.js');
+      const runtimeState = require('./runtime-state');
       process.exit(runtimeState.main(args.slice(1)));
     }
 
     if (args[0] === 'validate-registry') {
-      const validateRegistry = await import('./validate-registry.js');
+      const validateRegistry = require('./validate-registry');
       process.exit(validateRegistry.main(args.slice(1)));
     }
 
     if (args[0] === 'manifest-export') {
-      const manifestExport = await import('./manifest-export.js');
+      const manifestExport = require('./manifest-export');
       process.exit(await manifestExport.main(args.slice(1)));
     }
 
     if (args[0] === 'ide') {
-      const ideCommand = await import('./ide-command.js');
+      const ideCommand = require('./ide-command');
       process.exit(await ideCommand.main(args.slice(1)));
     }
 
     if (args[0] === 'hub') {
       // 切面接入：Hub 方案包能力独立在 hub-command 内部实现。
       // 加载或执行失败只影响 hub 子命令，不改变 init/sync/check 等旧主链。
-      const hubCommand = await import('./hub-command.js');
+      const hubCommand = require('./hub-command');
       process.exit(await hubCommand.main(args.slice(1)));
     }
 
@@ -219,7 +213,7 @@ function shouldUseIntegrityCommand(args, cwd) {
       throw new Error('task-orchestrator-runner is an internal runtime module; call it from the AI host layer instead of ai-spec-auto CLI');
     }
 
-    const runtimeBootstrap = await import('./runtime-bootstrap.js');
+    const runtimeBootstrap = require('./runtime-bootstrap');
     const runtimeHandOff = await runtimeBootstrap.maybeHandOffToRuntime({
       pkgRoot,
       args,
@@ -232,61 +226,61 @@ function shouldUseIntegrityCommand(args, cwd) {
     }
 
     if (args[0] === 'protocol-step') {
-      await (await import('../internal/visual-hooks/inbox-consumer.js')).consumeInbox({ targetDir: opts.cwd, timeoutMs: 50 }).catch(() => {});
-      const protocolWorkflow = await import('./protocol-workflow.js');
+      require('../internal/visual-hooks/inbox-consumer').consumeInbox({ targetDir: opts.cwd, timeoutMs: 50 }).catch(() => {});
+      const protocolWorkflow = require('./protocol-workflow');
       process.exit(await protocolWorkflow.main('step', args.slice(1)));
     }
 
     if (args[0] === 'protocol-advance') {
-      await (await import('../internal/visual-hooks/inbox-consumer.js')).consumeInbox({ targetDir: opts.cwd, timeoutMs: 50 }).catch(() => {});
-      const protocolWorkflow = await import('./protocol-workflow.js');
+      require('../internal/visual-hooks/inbox-consumer').consumeInbox({ targetDir: opts.cwd, timeoutMs: 50 }).catch(() => {});
+      const protocolWorkflow = require('./protocol-workflow');
       process.exit(await protocolWorkflow.main('advance', args.slice(1)));
     }
 
     if (args[0] === 'protocol-update') {
-      await (await import('../internal/visual-hooks/inbox-consumer.js')).consumeInbox({ targetDir: opts.cwd, timeoutMs: 50 }).catch(() => {});
-      const protocolWorkflow = await import('./protocol-workflow.js');
+      require('../internal/visual-hooks/inbox-consumer').consumeInbox({ targetDir: opts.cwd, timeoutMs: 50 }).catch(() => {});
+      const protocolWorkflow = require('./protocol-workflow');
       process.exit(await protocolWorkflow.main('update', args.slice(1)));
     }
 
     if (args[0] === 'protocol-stop') {
-      const protocolWorkflow = await import('./protocol-workflow.js');
+      const protocolWorkflow = require('./protocol-workflow');
       process.exit(await protocolWorkflow.main('stop', args.slice(1)));
     }
 
     if (args[0] === 'protocol-status') {
-      await (await import('../internal/visual-hooks/inbox-consumer.js')).consumeInbox({ targetDir: opts.cwd, timeoutMs: 50 }).catch(() => {});
-      const protocolWorkflow = await import('./protocol-workflow.js');
+      require('../internal/visual-hooks/inbox-consumer').consumeInbox({ targetDir: opts.cwd, timeoutMs: 50 }).catch(() => {});
+      const protocolWorkflow = require('./protocol-workflow');
       process.exit(await protocolWorkflow.main('status', args.slice(1)));
     }
 
     if (args[0] === 'expert-dispatch') {
-      const expertDispatch = await import('./expert-dispatch.js');
+      const expertDispatch = require('./expert-dispatch');
       process.exit(expertDispatch.main(args.slice(1)));
     }
 
     if (args[0] === 'expert-executor') {
-      const expertExecutor = await import('./expert-executor.js');
+      const expertExecutor = require('./expert-executor');
       process.exit(await expertExecutor.main(args.slice(1)));
     }
 
     if (args[0] === 'demo-runtime-smoke') {
-      const demoRuntimeSmoke = await import('./demo-runtime-smoke.js');
+      const demoRuntimeSmoke = require('./demo-runtime-smoke');
       process.exit(demoRuntimeSmoke.main(args.slice(1)));
     }
 
     if (args[0] === 'archive-change') {
-      const archiveChange = await import('./archive-change.js');
+      const archiveChange = require('./archive-change');
       process.exit(await archiveChange.main(args.slice(1)));
     }
 
     if (args[0] === 'visual-bridge') {
-      const visualBridge = await import('./visual-bridge.js');
+      const visualBridge = require('./visual-bridge');
       process.exit(await visualBridge.main(args.slice(1)));
     }
 
     if (args[0] === 'visual') {
-      const visualCommand = await import('./visual-command.js');
+      const visualCommand = require('./visual-command');
       process.exit(await visualCommand.main(args.slice(1)));
     }
 

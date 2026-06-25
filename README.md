@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@engineered/ai-spec-auto.svg)](https://www.npmjs.com/package/@engineered/ai-spec-auto)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![GitHub](https://img.shields.io/github/stars/Colouful/engineered-spec?style=social)](https://github.com/Colouful/engineered-spec)
+[![GitHub](https://img.shields.io/github/stars/gong-chick/engineered-spec?style=social)](https://github.com/gong-chick/engineered-spec)
 
 > **它不是单个 AI 工具的替代品,而是一套把需求、实现、检查、归档串成团队开发链路的项目级交付底座。**
 
@@ -364,8 +364,8 @@ export AI_SPEC_TELEMETRY_DISABLED=1
 
 欢迎提交 Issue 和 Pull Request!
 
-- 报告问题: https://github.com/Colouful/engineered-spec/issues
-- 提交 PR: https://github.com/Colouful/engineered-spec/pulls
+- 报告问题: https://github.com/gong-chick/engineered-spec/issues
+- 提交 PR: https://github.com/gong-chick/engineered-spec/pulls
 
 ## 📄 许可证
 
@@ -378,7 +378,7 @@ export AI_SPEC_TELEMETRY_DISABLED=1
 <details>
 <summary>点击展开详细说明</summary>
 
-`bin/telemetry/` 是一个**隔离的切面模块**,用于向私有部署的 [`engineered-spec-visual`](https://github.com/Colouful/engineered-spec-visual) 上报 CLI 安装与使用情况。
+`bin/telemetry/` 是一个**隔离的切面模块**,用于向私有部署的 [`engineered-spec-visual`](https://github.com/gong-chick/engineered-spec-visual) 上报 CLI 安装与使用情况。
 
 ### 默认行为
 

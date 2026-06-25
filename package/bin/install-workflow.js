@@ -147,7 +147,7 @@ function getSourceDir() {
     return PKG_ROOT;
   }
   const cacheDir = process.env.ENGINEERED_SPEC_CACHE || path.join(os.homedir(), '.ai-spec-auto');
-  const repo = process.env.ENGINEERED_SPEC_REPO || 'https://github.com/Colouful/engineered-spec.git';
+  const repo = process.env.ENGINEERED_SPEC_REPO || 'https://github.com/gong-chick/engineered-spec.git';
   const branch = process.env.ENGINEERED_SPEC_BRANCH || 'main';
   if (fs.existsSync(path.join(cacheDir, '.git'))) {
     spawnSync('git', ['-C', cacheDir, 'pull', '--quiet'], { stdio: 'ignore' });
