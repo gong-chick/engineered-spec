@@ -1,0 +1,11 @@
+node_modules
+dist
+lib
+assets
+public
+.eslintrc.js
+.eslintrc.cjs
+.prettierignore
+.stylelintrc
+.stylelintrc.cjs
+.stylelintrc.json

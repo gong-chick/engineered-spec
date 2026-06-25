@@ -1,0 +1,16 @@
+{
+  "skill_name": "project-init",
+  "evals": [
+    {
+      "id": "project-init-output-1",
+      "prompt": "对一个前端仓库执行 project-init，要求生成 01/03/context 并补齐缺失规则。",
+      "files": [],
+      "expected_output": "输出应明确写入清单、技术栈识别结果和缺失规则补齐范围，不允许只分析不落盘。",
+      "assertions": [
+        "包含固定产物 01/03/context/PROJECT",
+        "说明缺失规则的生成条件",
+        "强调不能只分析、不落盘"
+      ]
+    }
+  ]
+}

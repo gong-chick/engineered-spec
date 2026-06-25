@@ -1,0 +1,18 @@
+[
+  {
+    "query": "帮我新建一个 skill，用来扫描 Vue 项目的未使用组件",
+    "should_trigger": true
+  },
+  {
+    "query": "我想创建一个新的 agent skill，顺手把脚手架也建好",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我优化现有 skill 的 description 和 workflow",
+    "should_trigger": false
+  },
+  {
+    "query": "检查一下这个 skill 的质量问题",
+    "should_trigger": false
+  }
+]

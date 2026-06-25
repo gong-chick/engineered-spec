@@ -1,0 +1,18 @@
+[
+  {
+    "query": "重写 skill 的 workflow 和 gotchas",
+    "should_trigger": true
+  },
+  {
+    "query": "审查这个 skill 的 frontmatter 是否合规",
+    "should_trigger": true
+  },
+  {
+    "query": "从零搭一个新 skill 包",
+    "should_trigger": false
+  },
+  {
+    "query": "给我列出有哪些可安装的开源 skills",
+    "should_trigger": false
+  }
+]

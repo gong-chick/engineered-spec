@@ -1,0 +1,26 @@
+{
+  "assetId": "rule.react.basic",
+  "assetType": "rule",
+  "name": "React 基础规范",
+  "version": "1.0.0",
+  "source": "skill-q-platform",
+  "checksum": "sha256:example",
+  "compatibility": {
+    "adapters": [
+      "cursor",
+      "claudeCode"
+    ],
+    "frameworks": [
+      "react"
+    ]
+  },
+  "files": [
+    {
+      "path": "rules/react-basic.md",
+      "checksum": "sha256:file"
+    }
+  ],
+  "metadata": {
+    "owner": "platform-team"
+  }
+}

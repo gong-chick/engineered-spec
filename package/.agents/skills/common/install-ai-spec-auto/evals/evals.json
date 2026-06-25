@@ -1,0 +1,17 @@
+{
+  "skill_name": "install-ai-spec-auto",
+  "evals": [
+    {
+      "id": "install-ai-spec-auto-output-1",
+      "prompt": "在一个尚未接入规范库的 Vue 项目中，自动检查前置条件并执行 ai-spec-auto init 安装，安装完成后给出验证结果和下一步。",
+      "files": [],
+      "expected_output": "输出应覆盖环境检查、registry 配置检查、profile 推断、实际执行 init 命令、安装后验证，以及 project-init 作为下一步建议。",
+      "assertions": [
+        "明确检查 @ex registry 配置",
+        "执行 init 而不是只贴命令",
+        "区分 install 与 project-init",
+        "包含 check 或关键安装产物验证"
+      ]
+    }
+  ]
+}

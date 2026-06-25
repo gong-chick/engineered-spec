@@ -1,0 +1,52 @@
+# OpenSpec 项目配置（由 ai-spec-auto 提供的增强版模板）
+# install.sh / install.ps1 在 L3 安装时会将此模板写入 openspec/config.yaml，
+# 并同步 openspec/schemas/expert-delivery 到目标项目。
+# 详见 https://github.com/Fission-AI/OpenSpec
+
+schema: expert-delivery
+
+context: |
+  本项目接入 ai-spec-auto 专家协同平台：
+  - rules: .agents/rules/
+  - skills: .agents/skills/
+  - roles: .agents/roles/
+  - flows: .agents/flows/
+  - runtime: .ai-spec/
+
+  项目执行时优先遵循：
+  1. 仓库现有代码中的目录、路由、接口、样式、测试约定
+  2. context/PROJECT.md 中的项目背景与仓库事实
+  3. .agents/rules/ 中的团队规范
+  4. .agents/skills/ 中的执行技能
+
+rules:
+  proposal:
+    - "先收敛目标、范围、非目标项、默认假设和风险，再进入实现。"
+    - "能从项目规则和代码推断的内容，优先写入 assumptions，不重复标记为缺失输入。"
+    - "涉及页面、路由、接口、状态、样式时，必须对齐项目既有落点。"
+    - "proposal.md 需要写清业务目标、工程目标、组件复用策略、设计链接和变更入口。"
+  specs:
+    - "需求必须落为可测试的增量规范和场景。"
+    - "涉及 UI 时，验收场景应覆盖关键布局、状态和交互。"
+    - "涉及安装脚本、路径、运行态文件、归档或 IDE 适配时，必须明确 macOS / Linux / Windows 的行为差异与兼容边界。"
+    - "涉及产物生成、同步或删除时，必须明确目标定位依据，优先使用显式清单、注册表或固定映射，不依赖模糊模式匹配。"
+  tasks:
+    - "任务必须可执行、可验证、可交接。"
+    - "实现阶段不得静默扩 scope。"
+    - "涉及 UI 时必须明确验收方式；涉及接口时必须明确封装方式。"
+    - "保持改动最小化，聚焦于请求的变更。"
+    - "涉及安装、路径、runtime、归档或 IDE 适配时，必须包含跨平台验证任务。"
+    - "tasks.md 中每个子任务都必须写明目标、输入、输出、验证点和依赖或前置条件。"
+  design:
+    - "技术方案必须对齐项目目录、路由、API、状态、样式和测试约定。"
+    - "新增能力优先复用现有结构，不因单次变更引入无关重构。"
+    - "涉及路径处理时，必须使用跨平台路径能力，不硬编码路径分隔符。"
+    - "优先复用现有 registry、常量和显式映射，不引入启发式检测、模糊匹配或正则猜测。"
+    - "design.md 需要补齐信息结构、状态管理、组件复用策略和验收路径。"
+  checklist:
+    - "必须明确通过项、未通过项、阻断项和是否建议放行。"
+    - "检查结论必须基于 proposal/tasks、项目规则和实现证据。"
+    - "checklist.md 需要沉淀本地验证、浏览器验证、范围一致性和组件复用检查摘要。"
+  iterations:
+    - "必须记录问题、修正动作、残留风险和下轮提醒。"
+    - "iterations.md 需要记录问题来源、修正动作、残留风险和下轮提醒。"

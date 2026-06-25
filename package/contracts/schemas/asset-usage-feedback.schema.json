@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://br-ai-spec.local/contracts/asset-usage-feedback.schema.json",
+  "title": "AssetUsageFeedback",
+  "type": "object",
+  "required": [
+    "feedbackId",
+    "runId",
+    "projectId",
+    "assetId",
+    "assetType",
+    "status",
+    "metrics",
+    "timestamp"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "feedbackId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "projectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assetId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assetType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failure",
+        "blocked",
+        "unknown"
+      ],
+      "default": "unknown"
+    },
+    "metrics": {
+      "type": "object",
+      "default": {}
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

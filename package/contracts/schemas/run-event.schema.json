@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://br-ai-spec.local/contracts/run-event.schema.json",
+  "title": "RunEvent",
+  "type": "object",
+  "required": [
+    "eventId",
+    "runId",
+    "projectId",
+    "eventType",
+    "stage",
+    "status",
+    "timestamp"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "eventId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "projectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "eventType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failure",
+        "running",
+        "skipped",
+        "blocked",
+        "unknown"
+      ],
+      "default": "unknown"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "info",
+        "warn",
+        "error",
+        "blocking"
+      ],
+      "default": "info"
+    },
+    "message": {
+      "type": "string",
+      "default": ""
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "metadata": {
+      "type": "object",
+      "default": {}
+    }
+  }
+}

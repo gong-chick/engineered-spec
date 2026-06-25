@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://br-ai-spec.local/contracts/evidence-report.schema.json",
+  "title": "EvidenceReport",
+  "type": "object",
+  "required": [
+    "runId",
+    "projectId",
+    "finalStatus"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "projectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "taskId": {
+      "type": "string",
+      "default": ""
+    },
+    "specId": {
+      "type": "string",
+      "default": ""
+    },
+    "changedFiles": {
+      "type": "array",
+      "default": []
+    },
+    "testResults": {
+      "type": "array",
+      "default": []
+    },
+    "hookResults": {
+      "type": "array",
+      "default": []
+    },
+    "repairResults": {
+      "type": "array",
+      "default": []
+    },
+    "reviewResults": {
+      "type": "array",
+      "default": []
+    },
+    "finalStatus": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failure",
+        "blocked",
+        "unknown"
+      ],
+      "default": "unknown"
+    }
+  }
+}

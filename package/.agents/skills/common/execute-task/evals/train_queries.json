@@ -1,0 +1,18 @@
+[
+  {
+    "query": "按 tasks.md 开始执行第一个任务",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我应用这个 OpenSpec 变更",
+    "should_trigger": true
+  },
+  {
+    "query": "先生成一个提案",
+    "should_trigger": false
+  },
+  {
+    "query": "归档这个 change",
+    "should_trigger": false
+  }
+]

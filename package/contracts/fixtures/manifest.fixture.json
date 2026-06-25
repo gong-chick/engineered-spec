@@ -1,0 +1,20 @@
+{
+  "version": "0.1.0",
+  "rules": [
+    {
+      "assetId": "rule.react.basic",
+      "version": "1.0.0"
+    }
+  ],
+  "skills": [],
+  "agentProfiles": [],
+  "commands": [],
+  "hooks": [],
+  "adapters": {
+    "cursor": true,
+    "claudeCode": true,
+    "codex": false
+  },
+  "checksum": "sha256:example",
+  "generatedAt": "2026-05-07T00:00:00Z"
+}

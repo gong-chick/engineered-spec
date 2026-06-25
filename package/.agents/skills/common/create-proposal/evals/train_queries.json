@@ -1,0 +1,18 @@
+[
+  {
+    "query": "帮我给这个新页面需求起一个 OpenSpec 提案",
+    "should_trigger": true
+  },
+  {
+    "query": "我要发起一个包含 UI 和接口的需求 proposal",
+    "should_trigger": true
+  },
+  {
+    "query": "开始按 tasks.md 写代码",
+    "should_trigger": false
+  },
+  {
+    "query": "把这个变更归档",
+    "should_trigger": false
+  }
+]

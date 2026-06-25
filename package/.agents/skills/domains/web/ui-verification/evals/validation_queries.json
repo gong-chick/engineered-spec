@@ -1,0 +1,18 @@
+[
+  {
+    "query": "做一次 UI 还原验收，输出问题清单",
+    "should_trigger": true
+  },
+  {
+    "query": "用浏览器对照设计稿检查当前页面",
+    "should_trigger": true
+  },
+  {
+    "query": "我只有需求文字，没有设计稿",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我写提案里的 design.md",
+    "should_trigger": false
+  }
+]

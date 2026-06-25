@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "scenario_packages": {
+    "frontend-basic": {
+      "profiles": ["vue", "react"],
+      "roles": ["task-orchestrator", "requirement-analyst", "frontend-implementer", "code-guardian"],
+      "skills": ["create-proposal", "design-analysis", "execute-task"],
+      "rules": ["coding-standard", "api-standard", "route-standard", "style-standard", "generic-constraints", "test-standard-web"],
+      "domains": ["demand-design", "engineering", "governance", "testing"]
+    },
+    "design-to-code": {
+      "profiles": ["vue", "react"],
+      "roles": ["task-orchestrator", "requirement-analyst", "frontend-implementer", "code-guardian"],
+      "skills": ["design-analysis", "create-component", "ui-verification"],
+      "rules": ["component-standard", "style-standard", "test-standard-web"],
+      "domains": ["demand-design", "engineering", "testing"]
+    },
+    "quality-governance": {
+      "profiles": ["vue", "react"],
+      "roles": ["code-guardian"],
+      "skills": ["create-test", "ui-verification", "web-design-guidelines"],
+      "rules": ["test-standard-web", "format-check-standard-web", "audit-report-standard"],
+      "domains": ["governance", "testing"]
+    },
+    "enterprise-docs-prd": {
+      "roles": ["task-orchestrator", "requirement-analyst"],
+      "skills": ["create-proposal"],
+      "rules": ["doc-standard"],
+      "domains": ["demand-design", "documentation"]
+    },
+    "bugfix-to-verification": {
+      "profiles": ["vue", "react"],
+      "roles": [
+        "task-orchestrator",
+        "frontend-implementer",
+        "code-guardian",
+        "unit-test-specialist",
+        "verification-reviewer",
+        "performance-auditor"
+      ],
+      "skills": [
+        "execute-task",
+        "create-test",
+        "ui-verification",
+        "web-design-guidelines"
+      ],
+      "rules": [
+        "coding-standard",
+        "api-standard",
+        "route-standard",
+        "style-standard",
+        "test-standard-web",
+        "format-check-standard-web",
+        "audit-report-standard"
+      ],
+      "domains": ["orchestration", "engineering", "testing", "governance", "performance"]
+    },
+    "change-to-release": {
+      "profiles": ["vue", "react"],
+      "roles": [
+        "build-specialist",
+        "e2e-test-specialist",
+        "pipeline-specialist",
+        "deployment-specialist",
+        "code-guardian"
+      ],
+      "skills": [
+        "config-and-secret-scan",
+        "ui-verification",
+        "web-design-guidelines"
+      ],
+      "rules": [
+        "coding-standard",
+        "test-standard-web",
+        "format-check-standard-web",
+        "audit-report-standard"
+      ],
+      "domains": ["engineering", "testing", "delivery", "governance"]
+    },
+    "requirement-to-observability": {
+      "profiles": ["vue", "react"],
+      "roles": [
+        "requirement-analyst",
+        "event-instrumentation-specialist",
+        "error-tracker",
+        "rum-analyst"
+      ],
+      "skills": [
+        "create-proposal",
+        "design-analysis"
+      ],
+      "rules": [
+        "project-overview",
+        "api-standard",
+        "doc-standard",
+        "audit-report-standard"
+      ],
+      "domains": ["demand-design", "observability", "documentation", "governance"]
+    },
+    "change-to-architecture-review": {
+      "profiles": ["vue", "react"],
+      "roles": [
+        "architecture-advisor",
+        "dependency-governor",
+        "code-guardian"
+      ],
+      "skills": [
+        "create-proposal",
+        "dependency-impact-graph",
+        "config-and-secret-scan"
+      ],
+      "rules": [
+        "project-overview",
+        "project-structure",
+        "coding-standard",
+        "api-standard",
+        "route-standard",
+        "style-standard"
+      ],
+      "domains": ["engineering", "governance"]
+    }
+  }
+}

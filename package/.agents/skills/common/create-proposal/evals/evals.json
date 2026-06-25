@@ -1,0 +1,16 @@
+{
+  "skill_name": "create-proposal",
+  "evals": [
+    {
+      "id": "proposal-output-1",
+      "prompt": "用户要发起一个带设计稿和未就绪接口的新页面需求，请给出提案前置分析、上下文注入重点和后置检查项。",
+      "files": [],
+      "expected_output": "输出应覆盖设计稿、接口状态、交付形态、复杂交互、后置检查和下一步 apply/execute-task 提示。",
+      "assertions": [
+        "说明何时触发 design-analysis",
+        "明确 mock 与真实接口边界",
+        "包含后置检查与下一步建议"
+      ]
+    }
+  ]
+}

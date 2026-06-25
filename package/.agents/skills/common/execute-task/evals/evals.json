@@ -1,0 +1,16 @@
+{
+  "skill_name": "execute-task",
+  "evals": [
+    {
+      "id": "execute-output-1",
+      "prompt": "根据 tasks.md 的第一条未完成任务进入执行，要求输出四步结构并在最后给出审计结论。",
+      "files": [],
+      "expected_output": "输出必须包含头脑风暴、TDD 编码、双重审查、状态更新四个步骤，并保留确认门槛。",
+      "assertions": [
+        "四步标题完整出现",
+        "第一步包含确认门禁",
+        "第四步包含审计/状态更新信息"
+      ]
+    }
+  ]
+}

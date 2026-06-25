@@ -1,0 +1,18 @@
+[
+  {
+    "query": "优化这个 skill 的触发描述和 references 结构",
+    "should_trigger": true
+  },
+  {
+    "query": "检查一下这个 skill 为什么老是误触发",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我新建一个 skill",
+    "should_trigger": false
+  },
+  {
+    "query": "给现有 skill 加一个脚本并重构正文",
+    "should_trigger": true
+  }
+]

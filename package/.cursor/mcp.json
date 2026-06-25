@@ -1,0 +1,36 @@
+{
+  "mcpServers": {
+    "ApiFox - 接口文档": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "apifox-mcp-server@latest",
+        "--project-id=你的项目ID"
+      ],
+      "env": {
+        "APIFOX_ACCESS_TOKEN": "你的 APIFOX 访问令牌"
+      }
+    },
+    "Figma": {
+      "url": "https://mcp.figma.com/mcp",
+      "headers": {}
+    },
+    "context7": {
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {}
+    },
+    "Playwright": {
+      "command": "npx @playwright/mcp@latest"
+    },
+    "pencil": {
+      "name": "pencil",
+      "transport": "stdio",
+      "command": "<pencil-extension-path>/mcp-server-darwin-arm64",
+      "args": [
+        "--app",
+        "cursor"
+      ],
+      "env": {}
+    }
+  }
+}
