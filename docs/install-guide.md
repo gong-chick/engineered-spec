@@ -48,7 +48,7 @@ npx --yes --registry https://registry.npmjs.org/ @engineered/ai-spec-auto@latest
 如果你要使用 `install.sh` 或 `install.ps1`，先拿到当前仓库：
 
 ```bash
-git clone https://github.com/Colouful/engineered-spec.git ai-spec-auto
+git clone https://github.com/gong-chick/engineered-spec.git ai-spec-auto
 cd ai-spec-auto
 ```
 

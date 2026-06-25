@@ -578,7 +578,7 @@ LOG_LEVEL=info
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/Colouful/engineered-spec-visual.git
+git clone https://github.com/gong-chick/engineered-spec-visual.git
 cd engineered-spec-visual
 
 # 2. 配置环境变量
@@ -1068,7 +1068,7 @@ socket.on('run.state_changed', (event) => {
 
 ```bash
 # 1.1 克隆仓库
-git clone https://github.com/Colouful/engineered-spec-visual.git
+git clone https://github.com/gong-chick/engineered-spec-visual.git
 cd engineered-spec-visual
 
 # 1.2 复制环境变量模板

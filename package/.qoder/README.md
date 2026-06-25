@@ -109,6 +109,6 @@ npx @engineered/ai-spec-auto@latest uninstall .
 
 ## 技术支持
 
-- 项目仓库: https://github.com/Colouful/engineered-spec
-- 问题反馈: https://github.com/Colouful/engineered-spec/issues
+- 项目仓库: https://github.com/gong-chick/engineered-spec
+- 问题反馈: https://github.com/gong-chick/engineered-spec/issues
 - 文档索引: docs/README.md
