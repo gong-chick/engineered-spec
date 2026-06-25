@@ -1,6 +1,6 @@
 {
   "name": "@gong-ym/ai-spec-auto",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "type": "module",
   "description": "AI Coding 团队规范驱动开发 CLI — 一键安装规范、技能与工具配置",
   "homepage": "https://github.com/Colouful/engineered-spec#readme",
