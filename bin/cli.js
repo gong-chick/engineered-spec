@@ -1,7 +1,10 @@
 #!/usr/bin/env node
-const path = require('path');
-const fs = require('fs');
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const pkgRoot = path.join(__dirname, '..');
 let args = process.argv.slice(2);
 const env = { ...process.env, ENGINEERED_SPEC_LOCAL: pkgRoot };
